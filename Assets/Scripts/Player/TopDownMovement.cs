@@ -5,16 +5,17 @@ using UnityEngine;
 
 public class TopDownMovement : MonoBehaviour
 {
+    PlayerStatHandler _playerStatHandler;
     TopDownCharacterController _characterController;
     Rigidbody2D _rigidbody;
     SpriteRenderer _characterSprite;
     Vector2 _moveDirection;
-    float _moveSpeed = 5f;
     void Awake()
     {
         _characterController = gameObject.GetComponent<TopDownCharacterController>();
         _rigidbody = gameObject.GetComponent<Rigidbody2D>();
         _characterSprite = gameObject.GetComponentInChildren<SpriteRenderer>();
+        _playerStatHandler = gameObject.GetComponent<PlayerStatHandler>();
     }
     private void Start()
     {
@@ -35,6 +36,6 @@ public class TopDownMovement : MonoBehaviour
     }
     void ApplayMovement()
     {
-        _rigidbody.velocity = _moveDirection * _moveSpeed;
+        _rigidbody.velocity = _moveDirection * _playerStatHandler._playerStat.moveSpeed;
     }
 }

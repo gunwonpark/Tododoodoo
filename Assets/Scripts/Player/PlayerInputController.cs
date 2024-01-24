@@ -17,4 +17,9 @@ public class PlayerInputController : TopDownCharacterController
         Vector2 direction = mousePosition - (Vector2)transform.position;
         CallLookEvent(direction);
     }
+    public void OnAttack(InputValue value)
+    {
+        Debug.Log(value.isPressed);
+        IsAttacking = value.isPressed;
+    }
 }
