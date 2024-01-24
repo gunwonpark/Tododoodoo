@@ -9,6 +9,7 @@ public class Bullet : MonoBehaviour
     private float _bulletSpeed = 5f;
     private void Start()
     {
+        // 추후 ObejctPooling으로 변환 예정
         Destroy(gameObject, 3f);
     }
     void Update()
