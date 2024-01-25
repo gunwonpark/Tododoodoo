@@ -56,11 +56,11 @@ public class StageController : MonoBehaviour
     {
         GameObject warringLine = pool.GetFromPool("WarringLine");
         warringLine.transform.position = Vector3.zero;//PlayerPosition;
-        yield return new WaitForSeconds(1);//WaitTime;
+        yield return new WaitForSeconds(1);// 경고 시간
         warringLine.SetActive(false);
         GameObject Razer = pool.GetFromPool("Razer");
         Razer.transform.position = warringLine.transform.position;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1);//유지시간
         Razer.SetActive(false);
         yield return new WaitForSeconds(4);//레이저 주기
     }
