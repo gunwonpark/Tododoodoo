@@ -2374,10 +2374,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a12854932d30ca24cacd7a7dc5ca8066, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rewardWindow: {fileID: 0}
-  upgradeBtn1: {fileID: 0}
-  upgradeBtn2: {fileID: 0}
-  upgradeBtn3: {fileID: 0}
+  rewardWindow: {fileID: 1626154713}
+  upgradeBtn1: {fileID: 1176846856}
+  upgradeBtn2: {fileID: 1536630612}
+  upgradeBtn3: {fileID: 1846195621}
   attackUpgradeCount: 0
   speedUpgradeCount: 0
   jumpUpgradeCount: 0
