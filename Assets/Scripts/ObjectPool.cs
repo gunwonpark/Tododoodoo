@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
 {
-    ObjectPool i;
+    public static ObjectPool i;
     [Serializable]
     struct pool
     {
