@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private StageController _stageController;
     [SerializeField] private Reward _reward;
+    [SerializeField] private UIEffectManager _effectManager;
 
     // stage 클리어까지 필요한 시간
     [SerializeField] private float timeForWeek;
@@ -72,6 +73,20 @@ public class GameManager : MonoBehaviour
     IEnumerator StartStage()
     {
         currentTime = 0;
+        int timeCount = 3;
+        _effectManager.SetActiveText(0f, true);
+        while(timeCount >= 0)
+        {
+            if(timeCount == 0)
+            {
+                _effectManager.SetText("Start");
+                _effectManager.SetActiveText(.5f, false);
+                break;
+            }
+            _effectManager.SetTextFadeInOut(timeCount.ToString(), 1f);
+            timeCount--;
+            yield return new WaitForSeconds(1f);
+        }
         _stageController.StartStage();
         while (true)
         {
@@ -79,6 +94,7 @@ public class GameManager : MonoBehaviour
             if (currentTime > timeForWeek)
             {
                 _stageController.StopStage();
+                Time.timeScale = 0f;
                 break;
             }
             yield return null;
