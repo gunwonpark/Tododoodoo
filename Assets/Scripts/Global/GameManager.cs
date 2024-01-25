@@ -4,7 +4,19 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance;
+
+    // 현재 게임 진행 상황에 대한 상태
+    public enum State
+    {
+        Ready,
+        Play,
+        Reward,
+        Wait,
+    }
+
     [SerializeField] private StageController _stageController;
+    [SerializeField] private Reward _reward;
 
     // stage 클리어까지 필요한 시간
     [SerializeField] private float timeForWeek;
@@ -15,28 +27,55 @@ public class GameManager : MonoBehaviour
     public bool isReady;
     public bool isPlaying;
 
+    public State currentState;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("dfdf");
-        isReady = true;
-        StartCoroutine(ChangeStageState());
+        currentState = State.Ready;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        ChangeGameSceneByState();
     }
 
-    IEnumerator ChangeStageState()
+    // currentState에 따른 게임 진행상황 변경
+    private void ChangeGameSceneByState()
+    {
+        switch (currentState)
+        {
+            case State.Ready:
+                StartCoroutine(StartStage());
+                currentState = State.Play;
+                break;
+
+            case State.Play:
+                break;
+
+            case State.Reward:
+                _reward.StartReward();
+                break;
+            case State.Wait:
+                break;
+            default:
+                break;
+        }
+    }
+
+    IEnumerator StartStage()
     {
         currentTime = 0;
         _stageController.StartStage();
         while (true)
         {
             currentTime += Time.deltaTime;
-            Debug.Log(currentTime);
             if (currentTime > timeForWeek)
             {
                 _stageController.StopStage();
@@ -44,6 +83,7 @@ public class GameManager : MonoBehaviour
             }
             yield return null;
         }
+        currentState = State.Reward;
         yield return null;
     }
 }
