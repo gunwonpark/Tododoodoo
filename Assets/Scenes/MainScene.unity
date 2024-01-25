@@ -618,7 +618,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &180447322
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1809,7 +1809,7 @@ GameObject:
   - component: {fileID: 476794047}
   - component: {fileID: 476794046}
   - component: {fileID: 476794045}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Floor
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -2611,7 +2611,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blockPrefab: {fileID: 867924507483268056, guid: 7d5b57bd9304dcf49bab695d66e5f145, type: 3}
   _spawnPointsRoot: {fileID: 1995038839}
-  t: {fileID: 0}
+  t: {fileID: 810547726}
 --- !u!4 &629208891
 Transform:
   m_ObjectHideFlags: 0
@@ -3322,6 +3322,16 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 806784022}
   m_CullTransparentMesh: 1
+--- !u!1 &810547726 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 297179842086279211, guid: 3e12b94f7770b6643aefc0f43272b6bd, type: 3}
+  m_PrefabInstance: {fileID: 349271417}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &810547735 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3282694051563057408, guid: 3e12b94f7770b6643aefc0f43272b6bd, type: 3}
+  m_PrefabInstance: {fileID: 349271417}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &873036063
 GameObject:
   m_ObjectHideFlags: 0
@@ -4444,6 +4454,8 @@ MonoBehaviour:
   - Prefab: {fileID: 4222158459593343157, guid: 86ffa04aad003f042b06b1359e69824f, type: 3}
     tag: Bullet
     size: 30
+  _obstacleSpawner: {fileID: 1224951118}
+  Player: {fileID: 810547735}
 --- !u!114 &1224951120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4459,7 +4471,7 @@ MonoBehaviour:
   _stageController: {fileID: 629208890}
   _reward: {fileID: 1708188292}
   _effectManager: {fileID: 1379265053}
-  timeForWeek: 10
+  timeForWeek: 10000
   isReady: 0
   isPlaying: 0
   currentState: 0
@@ -4809,7 +4821,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1291723373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4847,6 +4859,7 @@ MonoBehaviour:
   - {fileID: 1018188544}
   - {fileID: 184375151}
   - {fileID: 969810326}
+  player: {fileID: 810547735}
 --- !u!4 &1291723375
 Transform:
   m_ObjectHideFlags: 0
