@@ -3,6 +3,19 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputController : TopDownCharacterController
 {
+    LayerMask target;
+    private void Start()
+    {
+        target = LayerMask.GetMask("Ground");
+    }
+    private void Update()
+    {
+        Debug.DrawRay(transform.position, Vector2.down * 0.5f, Color.red);
+        if (Physics2D.Raycast(transform.position, Vector2.down, 0.5f, target))
+        {
+            IsJumping = false;
+        }
+    }
     // 눌렀을때 한번 뗐을때 한번 호출
     public void OnMove(InputValue value)
     {        
@@ -28,15 +41,5 @@ public class PlayerInputController : TopDownCharacterController
             IsJumping = true;
             CallJumpEvent();
         }
-    }
-
-    // 추후 raycast로 변경 예정
-    // 벽에 부딫힐 경우 점프 한번 더 하는 경우가 생길듯 함
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Floor"))
-        {
-            IsJumping = false;
-        }       
     }
 }
