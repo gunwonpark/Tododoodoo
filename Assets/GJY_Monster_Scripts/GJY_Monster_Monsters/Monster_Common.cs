@@ -6,7 +6,7 @@ public class Monster_Common : MonsterController
 {
     [SerializeField] ObstacleSpawner _obstacleSpawner;
 
-    public override void Setup(ObstacleSpawner obstacleSpawner)
+    public override void Setup(ObstacleSpawner obstacleSpawner, Transform player)
     {        
         _obstacleSpawner = obstacleSpawner;
     }
