@@ -17,22 +17,16 @@ public class ObjectPool : MonoBehaviour
     Dictionary<string, Queue<GameObject>> myDic = new Dictionary<string, Queue<GameObject>>();
     private void Awake()
     {
-        if (i = null)
-        {
+        if (i == null)
             i = this;
-            for (int i = 0; i < pools.Length; i++)
-            {
-                Queue<GameObject> queue = new Queue<GameObject>();
-                for (int p = 0; p < pools[i].size; p++)
-                {
-                    queue.Enqueue(Instantiate(pools[i].Prefab));
-                }
-                myDic.Add(pools[i].tag, queue);
-            }
-        }
-        else
+        for (int i = 0; i < pools.Length; i++)
         {
-            Destroy(this);
+            Queue<GameObject> queue = new Queue<GameObject>();
+            for (int p = 0; p < pools[i].size; p++)
+            {
+                queue.Enqueue(Instantiate(pools[i].Prefab));
+            }
+            myDic.Add(pools[i].tag, queue);
         }
     }
 
