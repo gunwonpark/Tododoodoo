@@ -44,6 +44,7 @@ public class ObjectPool : MonoBehaviour
         }
         go = myDic[index].Dequeue();
         myDic[index].Enqueue(go);
+        go.SetActive(true);
         return go;
     }
 }
