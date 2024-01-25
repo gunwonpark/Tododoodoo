@@ -8,8 +8,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject Options;
     [SerializeField] private GameObject ResultScreen;
     [SerializeField] private GameObject Pause;
-    [SerializeField] private GameObject GameStopCheck;
+    [SerializeField] private GameObject GameExit;
     [SerializeField] private GameObject PlayScreen;
+    [SerializeField] private GameObject PlayerUpgrade;
+    [SerializeField] private GameObject GameOver;
 
     public void OnClickGameStartBtn()
     {
@@ -20,33 +22,43 @@ public class UIManager : MonoBehaviour
     {
         Options.SetActive(true);
     }
-    public void OnClickOptionsEscBtn()
+    public void OnClickOptionsExitBtn()
     {
         Options.SetActive(false);
     }
-    public void OnClickGameStopCheckBtn()
+    public void OnClickGameExitCheckBtn()
     {
         Pause.SetActive(false);
-        GameStopCheck.SetActive(true);
+        GameExit.SetActive(true);
     }
     public void OnClickMainScreenBtn()
     {
-        GameStopCheck.SetActive(false);
+        GameExit.SetActive(false);
         PlayScreen.SetActive(false);
         MainScreen.SetActive(true);
     }
     public void OnClickCancelBtn()
     {
-        GameStopCheck.SetActive(false);
+        GameExit.SetActive(false);
         Pause.SetActive(true);
     }
     public void OnClickPlayContinueBtn()
     {
         Pause.SetActive(false);
     }
-    public void OnClickResultScreenEscBtn()
+    public void OnClickResultScreenExitBtn()
     {
         ResultScreen.SetActive(false);
         MainScreen.SetActive(true);
+    }
+    public void OnClickUpgradeBtn()
+    {
+        PlayerUpgrade.SetActive(false);
+    }
+    public void OnClickGameExitBtn()
+    {
+        GameOver.SetActive(false);
+        PlayScreen.SetActive(false);
+        ResultScreen.SetActive(true);
     }
 }
