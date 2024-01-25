@@ -4,18 +4,24 @@ using UnityEngine.InputSystem;
 public class PlayerInputController : TopDownCharacterController
 {
     LayerMask target;
-    private void Start()
+    
+    protected override void Awake()
     {
+        base.Awake();
         target = LayerMask.GetMask("Ground");
     }
     protected override void Update()
     {
         base.Update();
-        Debug.DrawRay(transform.position, Vector2.down * 0.5f, Color.red);
-        if (Physics2D.Raycast(transform.position, Vector2.down, 0.5f, target))
+        Debug.DrawRay(transform.position, Vector2.down * 0.6f, Color.red);
+        if(_rigid.velocity.y <= 0)
         {
-            IsJumping = false;
+            if (Physics2D.Raycast(transform.position, Vector2.down, 0.6f, target))
+            {
+                IsJumping = false;
+            }
         }
+        
     }
     // 눌렀을때 한번 뗐을때 한번 호출
     public void OnMove(InputValue value)

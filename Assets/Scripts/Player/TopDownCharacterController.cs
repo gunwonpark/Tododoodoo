@@ -10,6 +10,7 @@ public class TopDownCharacterController : MonoBehaviour
     public event Action<PlayerStat> OnAttackEvent;
     public event Action OnJumpEvent;
 
+    protected Rigidbody2D _rigid;
     [SerializeField] PlayerStatHandler _playerStatHandler;
     protected bool IsAttacking { get; set; }
     protected bool IsJumping { get; set; }
@@ -18,7 +19,8 @@ private float _timeSinceLastAttack = float.MaxValue;
     protected virtual void Awake()
     {
         _playerStatHandler = gameObject.GetComponent<PlayerStatHandler>();
-    }
+        _rigid = GetComponent<Rigidbody2D>();
+}
     protected virtual void Update()
     {
         HandleAttackDelay();
