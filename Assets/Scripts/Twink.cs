@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Twink : MonoBehaviour
 {
     float fadeTime = 0.1f;
     SpriteRenderer _spRender;
-    private void Awake()
+    void OnEnable()
     {
         _spRender = GetComponent<SpriteRenderer>();
         StartCoroutine("StartTwinkLine");

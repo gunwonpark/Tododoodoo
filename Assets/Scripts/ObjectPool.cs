@@ -17,7 +17,7 @@ public class ObjectPool : MonoBehaviour
     Dictionary<string, Queue<GameObject>> myDic = new Dictionary<string, Queue<GameObject>>();
     private void Awake()
     {
-        if (i = null)
+        if (i == null)
         {
             i = this;
             for (int i = 0; i < pools.Length; i++)
@@ -25,7 +25,9 @@ public class ObjectPool : MonoBehaviour
                 Queue<GameObject> queue = new Queue<GameObject>();
                 for (int p = 0; p < pools[i].size; p++)
                 {
-                    queue.Enqueue(Instantiate(pools[i].Prefab));
+                    GameObject temp = Instantiate(pools[i].Prefab);
+                    temp.SetActive(false);
+                    queue.Enqueue(temp);
                 }
                 myDic.Add(pools[i].tag, queue);
             }
