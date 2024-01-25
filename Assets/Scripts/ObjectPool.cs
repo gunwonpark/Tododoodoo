@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
 {
+    ObjectPool i;
     [Serializable]
     struct pool
     {
@@ -16,14 +17,22 @@ public class ObjectPool : MonoBehaviour
     Dictionary<string, Queue<GameObject>> myDic = new Dictionary<string, Queue<GameObject>>();
     private void Awake()
     {
-        for (int i = 0; i < pools.Length; i++)
+        if (i = null)
         {
-            Queue<GameObject> queue = new Queue<GameObject>();
-            for (int p = 0; p < pools[i].size; p++)
+            i = this;
+            for (int i = 0; i < pools.Length; i++)
             {
-                queue.Enqueue(Instantiate(pools[i].Prefab));
+                Queue<GameObject> queue = new Queue<GameObject>();
+                for (int p = 0; p < pools[i].size; p++)
+                {
+                    queue.Enqueue(Instantiate(pools[i].Prefab));
+                }
+                myDic.Add(pools[i].tag, queue);
             }
-            myDic.Add(pools[i].tag,queue);
+        }
+        else
+        {
+            Destroy(this);
         }
     }
 
@@ -44,6 +53,7 @@ public class ObjectPool : MonoBehaviour
         }
         go = myDic[index].Dequeue();
         myDic[index].Enqueue(go);
+        go.SetActive(true);
         return go;
     }
 }
