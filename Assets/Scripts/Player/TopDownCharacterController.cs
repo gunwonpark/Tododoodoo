@@ -35,13 +35,11 @@ private float _timeSinceLastAttack = float.MaxValue;
     {
         if (_timeSinceLastAttack <= _playerStatHandler._playerStat.attackDelay)
         {
-            Debug.Log(1);
             _timeSinceLastAttack += Time.deltaTime;
         }
-        Debug.Log(2); Debug.Log(IsAttacking); Debug.Log(_timeSinceLastAttack);
+        
         if (IsAttacking && _timeSinceLastAttack > _playerStatHandler._playerStat.attackDelay)
         {
-            Debug.Log(3);
             _timeSinceLastAttack = 0;
             CallAttackEvent(_playerStatHandler._playerStat);
         }
