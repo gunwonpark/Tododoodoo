@@ -5,7 +5,7 @@ public class PlayerInputController : TopDownCharacterController
 {
     // 눌렀을때 한번 뗐을때 한번 호출
     public void OnMove(InputValue value)
-    {
+    {        
         Vector2 direction = value.Get<Vector2>();
         CallMoveEvent(direction);
     }
@@ -19,7 +19,22 @@ public class PlayerInputController : TopDownCharacterController
     }
     public void OnAttack(InputValue value)
     {
-        Debug.Log(value.isPressed);
         IsAttacking = value.isPressed;
+    }
+    public void OnJump()
+    {
+        if (!IsJumping)
+        {
+            IsJumping = true;
+            CallJumpEvent();
+        }
+        
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Floor"))
+        {
+            IsJumping = false;
+        }       
     }
 }

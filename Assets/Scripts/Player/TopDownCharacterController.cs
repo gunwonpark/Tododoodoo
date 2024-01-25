@@ -8,9 +8,12 @@ public class TopDownCharacterController : MonoBehaviour
     public event Action<Vector2> OnMoveEvent;
     public event Action<Vector2> OnLookEvent;
     public event Action<PlayerStat> OnAttackEvent;
+    public event Action OnJumpEvent;
 
     [SerializeField] PlayerStatHandler _playerStatHandler;
     protected bool IsAttacking;
+    protected bool IsJumping;
+
     private float _timeSinceLastAttack = float.MaxValue;
     private void Awake()
     {
@@ -44,5 +47,9 @@ public class TopDownCharacterController : MonoBehaviour
     public void CallAttackEvent(PlayerStat stat)
     {
         OnAttackEvent?.Invoke(stat);
+    }
+    public void CallJumpEvent()
+    {
+        OnJumpEvent?.Invoke();
     }
 }
