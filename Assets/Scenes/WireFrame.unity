@@ -2424,13 +2424,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 894538092}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8e6f1eb7bf036047a3cde7f4fc6e2c4, type: 3}
+  m_Script: {fileID: 11500000, guid: c7865839b056c864494dd6b747c7efc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _stageController: {fileID: 993456458}
+  _reward: {fileID: 868595807}
   timeForWeek: 10
   isReady: 0
   isPlaying: 0
+  currentState: 0
 --- !u!1 &894597972
 GameObject:
   m_ObjectHideFlags: 0
