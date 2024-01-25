@@ -32,8 +32,28 @@ public class Obstacle : MonoBehaviour, IDamagable
     {
         //To Do : 파괴 호출 후 자신의 위에 위치한 블록들을 이동 시켜야 됨.
         _isBroken = true;
+        CheckMyUpPosition();
 
         gameObject.SetActive(false);
     }    
 
+    private void CheckMyUpPosition()
+    {
+        Vector2 startRay = transform.position + Vector3.up;
+        RaycastHit2D hit = Physics2D.Raycast(startRay, Vector2.one, 0.5f);
+
+        if (hit && hit.collider.CompareTag("Ground"))
+        {
+            Debug.Log(hit.transform.name);
+            hit.transform.GetComponent<Obstacle>().CheckMyUpPosition();            
+        }            
+
+        if (!_isBroken)
+            MoveDown();
+    }
+
+    private void MoveDown()
+    {
+        transform.position += Vector3.down;
+    }
 }
