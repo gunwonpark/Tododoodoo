@@ -10,7 +10,7 @@ public class TopDownMovement : MonoBehaviour
     Rigidbody2D _rigidbody;
     SpriteRenderer _characterSprite;
     Vector2 _moveDirection;
-    [SerializeField] float _jumpRate = 10f;
+   
     void Awake()
     {
         _characterController = gameObject.GetComponent<TopDownCharacterController>();
@@ -27,7 +27,8 @@ public class TopDownMovement : MonoBehaviour
 
     private void Jump()
     {
-        _rigidbody.AddForce(Vector3.up * _jumpRate, ForceMode2D.Impulse);
+        Debug.Log(_playerStatHandler._playerStat.jumpDegree);
+        _rigidbody.AddForce(Vector3.up * _playerStatHandler._playerStat.jumpDegree, ForceMode2D.Impulse);
     }
 
     void FixedUpdate()
@@ -44,6 +45,7 @@ public class TopDownMovement : MonoBehaviour
     }
     void ApplayMovement()
     {
+        Debug.Log(_rigidbody.velocity.y);
         _rigidbody.velocity = new Vector2(_moveDirection.x * _playerStatHandler._playerStat.moveSpeed, _rigidbody.velocity.y);
     }
 }

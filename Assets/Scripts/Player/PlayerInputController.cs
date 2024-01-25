@@ -28,8 +28,10 @@ public class PlayerInputController : TopDownCharacterController
             IsJumping = true;
             CallJumpEvent();
         }
-        
     }
+
+    // 추후 raycast로 변경 예정
+    // 벽에 부딫힐 경우 점프 한번 더 하는 경우가 생길듯 함
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Floor"))
