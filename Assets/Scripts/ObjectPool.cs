@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
 {
+    ObstacleSpawner _obstacleSpawner;
     public static ObjectPool i;
     [Serializable]
     struct pool
@@ -20,6 +21,7 @@ public class ObjectPool : MonoBehaviour
         if (i == null)
         {
             i = this;
+            _obstacleSpawner = GetComponent<ObstacleSpawner>();
             for (int i = 0; i < pools.Length; i++)
             {
                 Queue<GameObject> queue = new Queue<GameObject>();
@@ -27,6 +29,7 @@ public class ObjectPool : MonoBehaviour
                 {
                     GameObject temp = Instantiate(pools[i].Prefab);
                     temp.SetActive(false);
+                    temp.GetComponent<MonsterController>()?.Setup(_obstacleSpawner);
                     queue.Enqueue(temp);
                 }
                 myDic.Add(pools[i].tag, queue);

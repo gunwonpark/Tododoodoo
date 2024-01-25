@@ -46,9 +46,8 @@ public class StageController : MonoBehaviour
         while(true)
         {
             int spawnPointIndex = Random.Range(0, _spawnPoints.Count);
-
-            Instantiate(blockPrefab, _spawnPoints[spawnPointIndex].position, Quaternion.identity);
-
+            GameObject temp = ObjectPool.i.GetFromPool("Monster_Common");
+            temp.transform.position = _spawnPoints[spawnPointIndex].position;
             yield return new WaitForSeconds(1f);
         }
     }
