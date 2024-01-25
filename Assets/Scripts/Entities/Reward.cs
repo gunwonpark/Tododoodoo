@@ -32,6 +32,7 @@ public class Reward : MonoBehaviour
         GameManager.Instance.currentState = GameManager.State.Ready;
         Debug.Log("공격력 +" + ++attackUpgradeCount);
         rewardWindow.SetActive(false);
+        Time.timeScale = 1f;
     }
 
     public void Upgrade2()
@@ -39,11 +40,13 @@ public class Reward : MonoBehaviour
         GameManager.Instance.currentState = GameManager.State.Ready;
         Debug.Log("공격력 +" + ++speedUpgradeCount);
         rewardWindow.SetActive(false);
+        Time.timeScale = 1f;
     }
     public void Upgrade3()
     {
         GameManager.Instance.currentState = GameManager.State.Ready;
         Debug.Log("공격력 +" + ++jumpUpgradeCount);
         rewardWindow.SetActive(false);
+        Time.timeScale = 1f;
     }
 }
