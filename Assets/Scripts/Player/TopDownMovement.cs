@@ -45,7 +45,6 @@ public class TopDownMovement : MonoBehaviour
     }
     void ApplayMovement()
     {
-        Debug.Log(_rigidbody.velocity.y);
         _rigidbody.velocity = new Vector2(_moveDirection.x * _playerStatHandler._playerStat.moveSpeed, _rigidbody.velocity.y);
     }
 }
