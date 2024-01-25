@@ -71,5 +71,7 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
-# For testFile
-/[Aa]ssets/Test
+
+
+/[Aa]ssets/[Tt]est.meta
+/[Aa]ssets/[Tt]est/*
