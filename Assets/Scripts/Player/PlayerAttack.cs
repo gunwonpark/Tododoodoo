@@ -27,9 +27,13 @@ public class PlayerAttack : MonoBehaviour
     }
     private void OnShoot(PlayerStat playerStat)
     {
-        bullet._bulletDirection = _bulletDirection;
         float degree = Mathf.Atan2(_bulletDirection.y, _bulletDirection.x) * Mathf.Rad2Deg;
         bool canShoot = !(degree < -playerStat.attakRange && degree > playerStat.attakRange - 180f);
-        if(canShoot) Instantiate(bullet, bulletPos.position, Quaternion.identity);
+        if (canShoot)
+        {
+            GameObject go = ObjectPool.i.GetFromPool("Bullet");
+            go.transform.position = bulletPos.position;
+            go.GetComponent<Bullet>()._bulletDirection = _bulletDirection;
+        }
     }
 }

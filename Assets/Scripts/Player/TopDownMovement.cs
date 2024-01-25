@@ -27,7 +27,6 @@ public class TopDownMovement : MonoBehaviour
 
     private void Jump()
     {
-        Debug.Log(_playerStatHandler._playerStat.jumpDegree);
         _rigidbody.AddForce(Vector3.up * _playerStatHandler._playerStat.jumpDegree, ForceMode2D.Impulse);
     }
 
