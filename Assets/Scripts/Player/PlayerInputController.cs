@@ -8,8 +8,9 @@ public class PlayerInputController : TopDownCharacterController
     {
         target = LayerMask.GetMask("Ground");
     }
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
         Debug.DrawRay(transform.position, Vector2.down * 0.5f, Color.red);
         if (Physics2D.Raycast(transform.position, Vector2.down, 0.5f, target))
         {
@@ -32,7 +33,7 @@ public class PlayerInputController : TopDownCharacterController
     }
     public void OnAttack(InputValue value)
     {
-        IsAttacking = value.isPressed;
+        base.IsAttacking = value.isPressed;
     }
     public void OnJump()
     {
