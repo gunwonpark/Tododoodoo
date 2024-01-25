@@ -9,11 +9,17 @@ public class Bullet : MonoBehaviour
     private float _bulletSpeed = 5f;
     private void Start()
     {
-        // 추후 ObejctPooling으로 변환 예정
-        Destroy(gameObject, 3f);
+        gameObject.SetActive(false);
     }
     void Update()
     {
         transform.position += (Vector3)_bulletDirection.normalized * _bulletSpeed * Time.deltaTime;
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Monster"))
+        {
+            gameObject.SetActive(false);
+        }
     }
 }
