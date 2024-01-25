@@ -6,6 +6,7 @@ public class MonsterSpawn_Temp : MonoBehaviour
 {
     [SerializeField] GameObject[] prefabs;
     [SerializeField] Transform[] spawnPoints;
+    [SerializeField] Transform player;
 
     private ObstacleSpawner obstacleSpawner;
 
@@ -28,6 +29,6 @@ public class MonsterSpawn_Temp : MonoBehaviour
         GameObject clone = Instantiate(prefabs[randMonster], spawnPoints[randPosition].position, Quaternion.identity);
         
         MonsterController mc = clone.GetComponent<MonsterController>();
-        mc.Setup(obstacleSpawner);
+        mc.Setup(obstacleSpawner, player);
     }
 }

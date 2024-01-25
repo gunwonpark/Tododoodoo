@@ -15,8 +15,9 @@ public class MonsterController : MonoBehaviour, IDamagable
     protected Rigidbody2D _rigid;
 
     protected bool _isInit = false;
+    protected bool _isDead = false;
 
-    public virtual void Setup(ObstacleSpawner obstacleSpawner) { }
+    public virtual void Setup(ObstacleSpawner obstacleSpawner, Transform player) { }
 
     private void Awake()
     {
@@ -27,12 +28,16 @@ public class MonsterController : MonoBehaviour, IDamagable
 
     private void OnEnable()
     {
+        _isDead = false;
         _hp = _maxHp;
         _rigid.velocity = Vector2.down * _moveSpeed;
     }
 
     public void GetDamage(float damage)
     {
+        if (_isDead)
+            return;
+
         _hp-=damage;
         if (_hp <= 0)
             Dead();
@@ -41,6 +46,7 @@ public class MonsterController : MonoBehaviour, IDamagable
     public virtual void Dead()
     {
         // Temp Code        
+        _isDead = true;
         _rigid.velocity = Vector2.zero;
         gameObject.SetActive(false);
     }
