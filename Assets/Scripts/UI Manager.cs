@@ -61,4 +61,16 @@ public class UIManager : MonoBehaviour
         PlayScreen.SetActive(false);
         ResultScreen.SetActive(true);
     }
+    public void OnClickPause()
+    {
+        Pause.SetActive(true);
+    }
+    public void OnClickGameOverBtn() // 게임오버 UI 테스트용 버튼 메서드
+    {
+        GameOver.SetActive(true);
+    }
+    public void OnClickPlayerUpgradeBtn() // 플레이어 업그레이드 UI 테스트용 버튼 메서드
+    {
+        PlayerUpgrade.SetActive(true);
+    }
 }
