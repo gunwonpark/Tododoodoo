@@ -84,5 +84,11 @@ public class Obstacle : MonoBehaviour, IDamagable
             MoveDown();
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Bullet") && collision.GetComponent<Bullet>()._shooter == Shooter.Player)
+            GetDamage(5);
+    }
+
     private void MoveDown() => transform.position += Vector3.down;
 }
