@@ -27,10 +27,12 @@ public class Monster_Range : MonsterController
 
     private void Shoot()
     {
-        GameObject go = Instantiate(_bulletPrefab, transform.position, Quaternion.identity);
-        Monster_Bullet mb = go.GetComponent<Monster_Bullet>();
+        GameObject go = ObjectPool.i.GetFromPool("Bullet");
+        go.transform.position = transform.position;
+
+        Bullet bullet = go.GetComponent<Bullet>();
         Vector3 dir = _player.transform.position - transform.position;
-        mb.Setup(dir);
+        bullet._bulletDirection = dir;
     }
 
     public override void Setup(ObstacleSpawner obstacleSpawner, Transform player)

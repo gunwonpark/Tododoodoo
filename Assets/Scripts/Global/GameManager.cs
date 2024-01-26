@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour
 
     public State currentState;
 
+    public int stageCount;
+
     private void Awake()
     {
         Instance = this;
@@ -39,6 +41,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         currentState = State.Ready;
+        stageCount = 0;
     }
 
     // Update is called once per frame
@@ -75,6 +78,8 @@ public class GameManager : MonoBehaviour
         currentTime = 0;
         int timeCount = 3;
         _effectManager.SetActiveText(0f, true);
+
+        // 스테이지 시작 카운트 표시
         while(timeCount >= 0)
         {
             if(timeCount == 0)
@@ -87,7 +92,9 @@ public class GameManager : MonoBehaviour
             timeCount--;
             yield return new WaitForSeconds(1f);
         }
-        _stageController.StartStage();
+
+        // 스테이지 시작
+        _stageController.StartStage(stageCount);
         while (true)
         {
             currentTime += Time.deltaTime;
@@ -95,6 +102,7 @@ public class GameManager : MonoBehaviour
             {
                 _stageController.StopStage();
                 Time.timeScale = 0f;
+                stageCount++;
                 break;
             }
             yield return null;
