@@ -152,7 +152,7 @@ public class StageController : MonoBehaviour
             yield return new WaitForSeconds(1);// 경고 시간
             warringLine.SetActive(false);
             GameObject Razer = ObjectPool.i.GetFromPool("Razer");
-            Razer.transform.position = new Vector3(warringLine.transform.position.x, Razer.transform.position.y, warringLine.transform.position.z);
+            Razer.transform.position = new Vector3(warringLine.transform.position.x, warringLine.transform.position.y + 50, warringLine.transform.position.z);
             yield return new WaitForSeconds(1);//유지시간
             Razer.SetActive(false);
         }

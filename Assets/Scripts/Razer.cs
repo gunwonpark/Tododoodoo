@@ -9,7 +9,7 @@ public class Razer : MonoBehaviour
     {
         _rigi = GetComponent<Rigidbody2D>();
     }
-    private void Start()
+    private void OnEnable()
     {
         _rigi.AddForce(Vector2.down * 3500);
     }
