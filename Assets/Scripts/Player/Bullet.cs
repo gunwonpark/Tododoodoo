@@ -14,6 +14,8 @@ public class Bullet : MonoBehaviour
     private Rigidbody2D _rigid;
     private float _bulletSpeed = 5f;
 
+    private bool _isHit = false;
+
     private void Awake()
     {
         _rigid = GetComponent<Rigidbody2D>();
@@ -21,6 +23,8 @@ public class Bullet : MonoBehaviour
 
     public void Setup(Shooter shooter, Vector2 direction, float speed)
     {
+        _isHit = false;
+
         _bulletDirection = direction;
         _bulletSpeed = speed;
         _shooter = shooter;
@@ -30,13 +34,21 @@ public class Bullet : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Ground"))
+        if (_isHit)
+            return;        
+        
+        if(_shooter == Shooter.Player && (collision.CompareTag("Monster")|| collision.CompareTag("Ground")))
         {
+            _isHit = true;
             gameObject.SetActive(false);
-        }
-        else if(_shooter == Shooter.Player && collision.CompareTag("Monster"))
-        {
-            gameObject.SetActive(false);
+            if (collision.CompareTag("Ground"))
+            {
+                Obstacle ob = collision.GetComponent<Obstacle>();
+                if(ob != null)
+                {
+                    ob.GetDamage(5);
+                }
+            }
         }
         else if(_shooter == Shooter.Monster && collision.CompareTag("Player"))
         {
