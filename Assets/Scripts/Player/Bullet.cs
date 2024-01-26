@@ -15,6 +15,7 @@ public class Bullet : MonoBehaviour
     private float _bulletSpeed = 5f;
 
     private bool _isHit = false;
+    private float _bulletDamage = 5f;
 
     private void Awake()
     {
@@ -41,16 +42,21 @@ public class Bullet : MonoBehaviour
         {
             _isHit = true;
             gameObject.SetActive(false);
+            if (collision.CompareTag("Monster"))
+            {
+                MonsterController ob = collision.GetComponent<MonsterController>();
+                ob.GetDamage(_bulletDamage);
+            }
             if (collision.CompareTag("Ground"))
             {
                 Obstacle ob = collision.GetComponent<Obstacle>();
                 if(ob != null)
                 {
-                    ob.GetDamage(5);
+                    ob.GetDamage(_bulletDamage);
                 }
             }
         }
-        else if(_shooter == Shooter.Monster && collision.CompareTag("Player"))
+        else if(_shooter == Shooter.Monster && (collision.CompareTag("Player") || collision.CompareTag("Ground")))
         {
             gameObject.SetActive(false);
         }
