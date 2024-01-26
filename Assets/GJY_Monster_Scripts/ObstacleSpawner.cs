@@ -10,7 +10,7 @@ public class ObstacleSpawner : MonoBehaviour
     public void Spawn(Vector2 position)
     {
         // 오브젝트 풀링으로 바뀔예정
-        GameObject go = Instantiate(_obstacle);
+        GameObject go = ObjectPool.i.GetFromPool("Block");
 
         Obstacle obs = go.GetComponent<Obstacle>();        
         obs.Setup(10, SetPosition(position));
