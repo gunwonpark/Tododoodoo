@@ -16,14 +16,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject PlayerUpgrade;
     [SerializeField] private GameObject GameOver;
     // 오디오믹서, 볼륨조절 슬라이드
-    [SerializeField] private Slider masterVolume_slider;
     [SerializeField] private AudioMixer audioMixer;
+    [SerializeField] private Slider masterVolume_slider;
     [SerializeField] private Slider bgm_slider;
-    [SerializeField] private AudioClip[] bgm_clips;
-    [SerializeField] private AudioSource bgm_player;
     [SerializeField] private Slider sfx_slider;
-    [SerializeField] private AudioClip[] sfx_clips;
-    [SerializeField] private AudioSource sfx_player;
 
     public static UIManager Instance;
 
@@ -38,23 +34,38 @@ public class UIManager : MonoBehaviour
         masterVolume_slider.onValueChanged.AddListener(SetMasterVolume);
         bgm_slider.onValueChanged.AddListener(SetBgmVolume);
         sfx_slider.onValueChanged.AddListener(SetSfxVolume);
-
+    }
+    private void Start()
+    {// 볼륨, 볼륨 슬라이더 셋팅 PlayerPrefs 저장값으로 초기화
         masterVolume_slider.value = PlayerPrefs.GetFloat("MasterVolume");
         bgm_slider.value = PlayerPrefs.GetFloat("BgmVolume");
         sfx_slider.value = PlayerPrefs.GetFloat("SfxVolume");
-    }
-    private void Start()
-    {
+
         audioMixer.SetFloat("Master", Mathf.Log10(PlayerPrefs.GetFloat("MasterVolume")) * 20);
         audioMixer.SetFloat("BGM", Mathf.Log10(PlayerPrefs.GetFloat("BgmVolume")) * 20);
         audioMixer.SetFloat("SFX", Mathf.Log10(PlayerPrefs.GetFloat("SfxVolume")) * 20);
     }
-    // UI 활성화 버튼
+    // 볼륨 조절 및 셋팅값 저장
+    public void SetMasterVolume(float value)
+    {
+        audioMixer.SetFloat("Master", Mathf.Log10(value) * 20);
+        PlayerPrefs.SetFloat("MasterVolume", value);
+    }
+    public void SetBgmVolume(float value)
+    {
+        audioMixer.SetFloat("BGM", Mathf.Log10(value) * 20);
+        PlayerPrefs.SetFloat("BgmVolume", value);
+    }
+    public void SetSfxVolume(float value)
+    {
+        audioMixer.SetFloat("SFX", Mathf.Log10(value) * 20);
+        PlayerPrefs.SetFloat("SfxVolume", value);
+    }
+    // UI 활성화 버튼 메서드
     public void OnClickGameStartBtn()
     {
         MainScreen.SetActive(false);
         PlayScreen.SetActive(true);
-        PlayBgm("Playing");
     }
     public void OnClickOptionsBtn()
     {
@@ -105,59 +116,14 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 0;
         Pause.SetActive(true);
     }
-    public void OnClickGameOverBtn() // 게임오버 UI 테스트용 버튼 메서드
+    public void OnClickGameOverBtn() // 게임오버 테스트용 버튼 메서드
     {
         Time.timeScale = 0;
         GameOver.SetActive(true);
     }
-    public void OnClickPlayerUpgradeBtn() // 플레이어 업그레이드 UI 테스트용 버튼 메서드
+    public void OnClickPlayerUpgradeBtn() // 플레이어 업그레이드 테스트용 버튼 메서드
     {
         Time.timeScale = 0;
         PlayerUpgrade.SetActive(true);
-    }
-    // 볼륨 조절 및 셋팅값 저장
-    public void SetMasterVolume(float value)
-    {
-        audioMixer.SetFloat("Master", Mathf.Log10(value) * 20);
-        PlayerPrefs.SetFloat("MasterVolume", value);
-    }
-    public void SetBgmVolume(float value)
-    {
-        audioMixer.SetFloat("BGM", Mathf.Log10(value) * 20);
-        PlayerPrefs.SetFloat("BgmVolume", value);
-    }
-    public void SetSfxVolume(float value)
-    {
-        audioMixer.SetFloat("SFX", Mathf.Log10(value) * 20);
-        PlayerPrefs.SetFloat("SfxVolume", value);
-    }
-    // 배경음악, 효과음 재생 메서드
-    public void PlayBgm(string type)
-    {
-        bgm_player.Stop();
-        int index = 0;
-        switch (type)
-        {
-            case "Main": index = 0; break;
-            case "Playing": index = 1; break;
-
-            default: break;
-        }
-        bgm_player.clip = bgm_clips[index];
-        bgm_player.Play();
-    }
-    public void PlaySound(string type)
-    {
-        GameObject sfx = ObjectPool.i.GetFromPool("Sfx");
-        AudioSource audioSource = sfx.GetComponent<AudioSource>();
-        int index = 0;
-        switch (type)
-        {
-            case "Shot": index = 0; break;
-            case "Hit": index = 1; break;
-            default: break;
-        }
-        audioSource.clip = sfx_clips[index];
-        audioSource.Play();
     }
 }
