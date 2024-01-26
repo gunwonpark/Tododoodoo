@@ -40,6 +40,7 @@ public class Bullet : MonoBehaviour
         
         if(_shooter == Shooter.Player && (collision.CompareTag("Monster")|| collision.CompareTag("Ground")))
         {
+            UIManager.Instance.PlaySound("Hit");
             _isHit = true;
             gameObject.SetActive(false);
             if (collision.CompareTag("Monster"))
@@ -58,6 +59,7 @@ public class Bullet : MonoBehaviour
         }
         else if(_shooter == Shooter.Monster && (collision.CompareTag("Player") || collision.CompareTag("Ground")))
         {
+            UIManager.Instance.PlaySound("Hit");
             gameObject.SetActive(false);
         }
     }

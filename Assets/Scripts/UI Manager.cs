@@ -54,8 +54,7 @@ public class UIManager : MonoBehaviour
     {
         MainScreen.SetActive(false);
         PlayScreen.SetActive(true);
-        PlayBgm("Main");
-        Time.timeScale = 1.0f;
+        PlayBgm("Playing");
     }
     public void OnClickOptionsBtn()
     {
@@ -74,9 +73,6 @@ public class UIManager : MonoBehaviour
     {
         SceneManager.LoadScene("UI");
         Time.timeScale = 1.0f;
-        //GameExit.SetActive(false);
-        //PlayScreen.SetActive(false);
-        //MainScreen.SetActive(true);
     }
     public void OnClickCancelBtn()
     {
@@ -92,8 +88,6 @@ public class UIManager : MonoBehaviour
     {
         SceneManager.LoadScene("UI");
         Time.timeScale = 1.0f;
-        //ResultScreen.SetActive(false);
-        //MainScreen.SetActive(true);
     }
     public void OnClickUpgradeBtn()
     {
@@ -140,12 +134,12 @@ public class UIManager : MonoBehaviour
     // 배경음악, 효과음 재생 메서드
     public void PlayBgm(string type)
     {
-        if (bgm_player.isPlaying)
-            bgm_player.Stop();
+        bgm_player.Stop();
         int index = 0;
         switch (type)
         {
             case "Main": index = 0; break;
+            case "Playing": index = 1; break;
 
             default: break;
         }
@@ -154,12 +148,16 @@ public class UIManager : MonoBehaviour
     }
     public void PlaySound(string type)
     {
+        GameObject sfx = ObjectPool.i.GetFromPool("Sfx");
+        AudioSource audioSource = sfx.GetComponent<AudioSource>();
         int index = 0;
         switch (type)
         {
+            case "Shot": index = 0; break;
+            case "Hit": index = 1; break;
             default: break;
         }
-        sfx_player.clip = sfx_clips[index];
-        sfx_player.Play();
+        audioSource.clip = sfx_clips[index];
+        audioSource.Play();
     }
 }
