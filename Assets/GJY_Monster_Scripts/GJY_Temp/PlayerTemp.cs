@@ -47,7 +47,7 @@ public class PlayerTemp : MonoBehaviour
             {
                 Debug.Log(hit.transform.name);
                 Obstacle obs = hit.transform.GetComponent<Obstacle>();
-                obs.GetDamage(5);
+                obs.GetDamage(1);
             }
         }
     }
