@@ -58,4 +58,16 @@ public class ObjectPool : MonoBehaviour
         go.SetActive(true);
         return go;
     }
+
+    public void DestroyAll(string index)
+    {
+        if (!myDic.ContainsKey(index))
+        {
+            Debug.Log($"풀에 해당 {index}의 프리팹이 없음.");
+        }
+        foreach(GameObject go in myDic[index])
+        {
+            go.SetActive(false);
+        }
+    }
 }

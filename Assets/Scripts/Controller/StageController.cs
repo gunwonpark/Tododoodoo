@@ -60,6 +60,11 @@ public class StageController : MonoBehaviour
     public void StopStage()
     {
         StopAllCoroutines();
+        for(int i = 0; i < spawnMonsterType.Length; i++)
+        {
+            ObjectPool.i.DestroyAll(spawnMonsterType[i]);
+        }
+        ObjectPool.i.DestroyAll("Block");
     }
 
     void InitStageValue(int stageCount)
