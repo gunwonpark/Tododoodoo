@@ -42,6 +42,10 @@ public class UIManager : MonoBehaviour
         masterVolume_slider.value = PlayerPrefs.GetFloat("MasterVolume");
         bgm_slider.value = PlayerPrefs.GetFloat("BgmVolume");
         sfx_slider.value = PlayerPrefs.GetFloat("SfxVolume");
+
+        audioMixer.SetFloat("Master", Mathf.Log10(PlayerPrefs.GetFloat("MasterVolume")) * 20);
+        audioMixer.SetFloat("BGM", Mathf.Log10(PlayerPrefs.GetFloat("BgmVolume")) * 20);
+        audioMixer.SetFloat("SFX", Mathf.Log10(PlayerPrefs.GetFloat("SfxVolume")) * 20);
     }
     // UI 활성화 버튼
     public void OnClickGameStartBtn()
