@@ -23,7 +23,7 @@ public class PlayerAttack : MonoBehaviour
     private void OnAim(Vector2 newBulletDirection)
     {
         // 마우스 방향으로 조절
-        _bulletDirection = newBulletDirection;
+        _bulletDirection = newBulletDirection.normalized;
     }
     private void OnShoot(PlayerStat playerStat)
     {
@@ -33,7 +33,8 @@ public class PlayerAttack : MonoBehaviour
         {
             GameObject go = ObjectPool.i.GetFromPool("Bullet");
             go.transform.position = bulletPos.position;
-            go.GetComponent<Bullet>()._bulletDirection = _bulletDirection;
+            Bullet bullet = go.GetComponent<Bullet>();
+            bullet.Setup(Shooter.Player, _bulletDirection, 10);
         }
     }
 }

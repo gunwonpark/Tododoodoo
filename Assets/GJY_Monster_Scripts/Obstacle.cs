@@ -73,16 +73,14 @@ public class Obstacle : MonoBehaviour, IDamagable
     {
         Vector2 startRay = transform.position + Vector3.up;
         RaycastHit2D hit = Physics2D.Raycast(startRay, Vector2.one, 0.5f);
+        Debug.DrawRay(startRay, Vector2.one * 0.5f, Color.red);
 
         if (hit && hit.collider.CompareTag("Ground"))
-        {
-            Debug.Log(hit.transform.name);
             hit.transform.GetComponent<Obstacle>().CheckMyUpPosition();
-        }
 
         if (!_isBroken)
             MoveDown();
-    }
+    }    
 
     private void MoveDown() => transform.position += Vector3.down;
 }

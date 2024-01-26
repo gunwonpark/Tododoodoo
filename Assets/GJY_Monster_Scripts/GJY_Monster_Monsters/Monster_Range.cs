@@ -30,8 +30,9 @@ public class Monster_Range : MonsterController
         GameObject go = ObjectPool.i.GetFromPool("Bullet");
         go.transform.position = transform.position;
 
-        Bullet bullet = go.GetComponent<Bullet>();
+        Bullet bullet = go.GetComponent<Bullet>();        
         Vector3 dir = _player.transform.position - transform.position;
+        bullet.Setup(Shooter.Monster, dir, 0.5f);
         bullet._bulletDirection = dir;
     }
 
