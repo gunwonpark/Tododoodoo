@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 19757436}
   - component: {fileID: 19757435}
   m_Layer: 5
-  m_Name: SecondUpgradeBtn
+  m_Name: AttakDelayupgradeBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -211,6 +211,18 @@ MonoBehaviour:
       - m_Target: {fileID: 931297811}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: OnClickUpgradeBtn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 349271418}
+        m_TargetAssemblyTypeName: PlayerStatHandler, Assembly-CSharp
+        m_MethodName: DecreaseAttackDelay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1475,6 +1487,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e12b94f7770b6643aefc0f43272b6bd, type: 3}
+--- !u!114 &349271418 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7374984188112954854, guid: 3e12b94f7770b6643aefc0f43272b6bd, type: 3}
+  m_PrefabInstance: {fileID: 349271417}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b345bbbe6b9666f4487ddc71fdc78696, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &361653910
 GameObject:
   m_ObjectHideFlags: 0
@@ -2350,7 +2373,7 @@ GameObject:
   - component: {fileID: 627113247}
   - component: {fileID: 627113246}
   m_Layer: 5
-  m_Name: ThirdUpgradeBtn
+  m_Name: MoveSpeedupgradeBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2425,6 +2448,18 @@ MonoBehaviour:
       - m_Target: {fileID: 931297811}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: OnClickUpgradeBtn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 349271418}
+        m_TargetAssemblyTypeName: PlayerStatHandler, Assembly-CSharp
+        m_MethodName: IncreaseMoveSpeed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8872,7 +8907,7 @@ GameObject:
   - component: {fileID: 2087583392}
   - component: {fileID: 2087583391}
   m_Layer: 5
-  m_Name: FirstUpgradeBtn
+  m_Name: JumpUpgradeBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8947,6 +8982,18 @@ MonoBehaviour:
       - m_Target: {fileID: 931297811}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: OnClickUpgradeBtn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 349271418}
+        m_TargetAssemblyTypeName: PlayerStatHandler, Assembly-CSharp
+        m_MethodName: IncreaseJumpDegree
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
