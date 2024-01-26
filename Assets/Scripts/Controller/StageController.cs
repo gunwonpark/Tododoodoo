@@ -73,6 +73,8 @@ public class StageController : MonoBehaviour
             ObjectPool.i.DestroyAll(spawnMonsterType[i]);
         }
         ObjectPool.i.DestroyAll("Block");
+        ObjectPool.i.DestroyAll("WarringLine");
+        ObjectPool.i.DestroyAll("Razer");
     }
 
     // 스테이지에 따른 스폰관련 변수 변경
@@ -152,7 +154,7 @@ public class StageController : MonoBehaviour
             yield return new WaitForSeconds(1);// 경고 시간
             warringLine.SetActive(false);
             GameObject Razer = ObjectPool.i.GetFromPool("Razer");
-            Razer.transform.position = warringLine.transform.position;
+            Razer.transform.position = new Vector3(warringLine.transform.position.x, warringLine.transform.position.y + 50, warringLine.transform.position.z);
             yield return new WaitForSeconds(1);//유지시간
             Razer.SetActive(false);
         }

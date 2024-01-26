@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private StageController _stageController;
     [SerializeField] private Reward _reward;
     [SerializeField] private UIEffectManager _effectManager;
+    [SerializeField] private GaugeController _gaugeController;
 
     // stage 클리어까지 필요한 시간
     [SerializeField] private float timeForWeek;
@@ -96,9 +97,12 @@ public class GameManager : MonoBehaviour
 
         // 스테이지 시작
         _stageController.StartStage(stageCount);
+        _gaugeController.InitPlayerIcon();
         while (true)
         {
             currentTime += Time.deltaTime;
+            _gaugeController.UpdatePlayerIcon(timeForWeek, currentTime);
+
             if (currentTime > timeForWeek)
             {
                 _stageController.StopStage();
