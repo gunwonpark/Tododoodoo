@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
         Reward,
         Wait,
     }
-
+    [SerializeField] public Transform Player;
     [SerializeField] private StageController _stageController;
     [SerializeField] private Reward _reward;
     [SerializeField] private UIEffectManager _effectManager;

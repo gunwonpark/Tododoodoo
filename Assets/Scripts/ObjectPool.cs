@@ -15,8 +15,6 @@ public class ObjectPool : MonoBehaviour
     }
     [SerializeField]pool[] pools;
     Dictionary<string, Queue<GameObject>> myDic = new Dictionary<string, Queue<GameObject>>();
-    [SerializeField] ObstacleSpawner _obstacleSpawner;
-    [SerializeField] Transform Player;
     private void Awake()
     {
         if (i == null)
@@ -29,7 +27,6 @@ public class ObjectPool : MonoBehaviour
                 {
                     GameObject temp = Instantiate(pools[i].Prefab);
                     temp.SetActive(false);
-                    temp.GetComponent<MonsterController>()?.Setup(_obstacleSpawner, Player);
                     queue.Enqueue(temp);
                 }
                 myDic.Add(pools[i].tag, queue);
