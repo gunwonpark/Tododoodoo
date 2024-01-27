@@ -12,7 +12,7 @@ public class TopDownCharacterController : MonoBehaviour
 
     protected Rigidbody2D _rigid;
     [SerializeField] PlayerStatHandler _playerStatHandler;
-    protected bool IsAttacking { get; set; }
+    public bool IsAttacking { get; set; }
     protected bool IsJumping { get; set; }
 
 private float _timeSinceLastAttack = float.MaxValue;

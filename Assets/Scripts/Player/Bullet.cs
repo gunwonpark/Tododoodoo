@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,11 +6,14 @@ public enum Shooter { Player, Monster }
 
 public class Bullet : MonoBehaviour
 {
-    public Shooter _shooter;
+    [SerializeField] Sprite enemySprite;
+    [SerializeField] Sprite[] _bulletSprites;
 
-    public Vector2 _bulletDirection;
+    private Shooter _shooter;
+    private Vector2 _bulletDirection;
 
     private Rigidbody2D _rigid;
+    private SpriteRenderer _spriteRenderer;
     private float _bulletSpeed = 5f;
 
     private bool _isHit = false;
@@ -20,6 +22,7 @@ public class Bullet : MonoBehaviour
     private void Awake()
     {
         _rigid = GetComponent<Rigidbody2D>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     public void Setup(Shooter shooter, Vector2 direction, float speed)
@@ -29,10 +32,22 @@ public class Bullet : MonoBehaviour
         _bulletDirection = direction;
         _bulletSpeed = speed;
         _shooter = shooter;
+        _spriteRenderer.sprite = enemySprite;
 
         _rigid.velocity = _bulletDirection * _bulletSpeed;
-    }    
-    
+
+        if (_shooter == Shooter.Player)
+            SetBulletSprite();
+    }
+
+    private void SetBulletSprite()
+    {        
+        _spriteRenderer.sprite = _bulletSprites[Random.Range(0, _bulletSprites.Length)];
+
+        float randZ = Random.Range(0, 360);
+        transform.eulerAngles = Vector3.forward * randZ;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (_isHit)
