@@ -15,10 +15,10 @@ public class PlayerInputController : TopDownCharacterController
     protected override void Update()
     {
         base.Update();
-        Debug.DrawRay(transform.position, Vector2.down * 0.6f, Color.red);
+        Debug.DrawRay(transform.position, Vector2.down * 1f, Color.red);
         if(_rigid.velocity.y <= 0)
         {
-            if (Physics2D.Raycast(transform.position, Vector2.down, 0.6f, target))
+            if (Physics2D.Raycast(transform.position, Vector2.down, 1f, target))
             {
                 IsJumping = false;
             }
