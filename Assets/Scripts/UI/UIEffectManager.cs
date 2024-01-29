@@ -7,19 +7,6 @@ using UnityEngine;
 public class UIEffectManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI countTimeText;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void SetTextFadeInOut(string count, float time)
     {
         countTimeText.text = count;

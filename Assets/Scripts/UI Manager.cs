@@ -66,6 +66,7 @@ public class UIManager : MonoBehaviour
     {
         MainScreen.SetActive(false);
         PlayScreen.SetActive(true);
+        GameManager.Instance.currentState = GameManager.State.Ready;
     }
     public void OnClickOptionsBtn()
     {

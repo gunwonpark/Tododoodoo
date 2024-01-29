@@ -51,13 +51,6 @@ public class StageController : MonoBehaviour
         _currentSpawnLaserDelay = _spawnLaserDelay;
         _currentTypeOfMonster = _typeOfMonster;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void StartStage(int stageCount)
     {
         InitStageValue(stageCount);
