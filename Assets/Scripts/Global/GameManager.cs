@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -31,6 +32,7 @@ public class GameManager : MonoBehaviour
     public State currentState;
 
     public int stageCount;
+    [SerializeField] Text StageCountTxt;
 
     private void Awake()
     {
@@ -41,7 +43,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         currentState = State.Wait;
-        stageCount = 0;
+        stageCount = 1;
+        AudioManager.Instance.PlayBgm("Main");
     }
 
     // Update is called once per frame
@@ -100,6 +103,7 @@ public class GameManager : MonoBehaviour
                 _stageController.StopStage();
                 Time.timeScale = 0f;
                 stageCount++;
+                StageCountTxt.text = stageCount.ToString();
                 break;
             }
             yield return null;

@@ -5,8 +5,8 @@ using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
-    [SerializeField] private AudioClip[] bgm_clips;
     [SerializeField] private AudioSource bgm_player;
+    [SerializeField] private AudioClip[] bgm_clips;
     [SerializeField] private AudioClip[] sfx_clips;
 
     public static AudioManager Instance;
