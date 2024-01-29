@@ -118,7 +118,13 @@ public class StageController : MonoBehaviour
         }
         return list;
     }
-
+    public void ResetCur()
+    {
+        _currentSpawnDelay = _spawnDelay;
+        _currentSpawnLaserDelay = _spawnLaserDelay;
+        _currentSpawnNum = _spawnNum;
+        _currentTypeOfMonster = _typeOfMonster;
+    }
     // 몬스터 스폰 코루틴
     IEnumerator SpawnMonster()
     {

@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
         Ready,
         Reward,
         Wait,
+        Dead
     }
     [SerializeField] public Transform Player;
     [SerializeField] private StageController _stageController;
@@ -67,6 +68,12 @@ public class GameManager : MonoBehaviour
             case State.Reward:
                 _reward.StartReward();
                 break;
+            case State.Dead:
+                _stageController.StopStage();
+                _stageController.ResetCur();
+                StopAllCoroutines();
+                Instance.currentState = State.Wait;
+                break;
         }
     }
 
@@ -91,13 +98,13 @@ public class GameManager : MonoBehaviour
         }
 
         // 스테이지 시작
+        Player.gameObject.SetActive(true);
         _stageController.StartStage(stageCount);
         _gaugeController.InitPlayerIcon();
         while (true)
         {
             currentTime += Time.deltaTime;
             _gaugeController.UpdatePlayerIcon(timeForWeek, currentTime);
-
             if (currentTime > timeForWeek)
             {
                 _stageController.StopStage();
