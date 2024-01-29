@@ -46,6 +46,7 @@ public class TopDownMovement : MonoBehaviour
     void Dead()
     {
         GameManager.Instance.currentState = GameManager.State.Dead;
+        _playerStatHandler._playerStat.Init();
         gameObject.SetActive(false);
     }
     private void OnEnable()

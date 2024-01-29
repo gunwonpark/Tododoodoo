@@ -16,4 +16,11 @@ public class PlayerStat
         attackDelay = 0.2f;
         jumpDegree = 10f;
     }
+
+    public  void Init()
+    {
+        moveSpeed = 5f;
+        attackDelay = 0.2f;
+        jumpDegree = 10f;
+    }
 }

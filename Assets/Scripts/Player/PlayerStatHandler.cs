@@ -25,4 +25,8 @@ public class PlayerStatHandler : MonoBehaviour
     {
         _playerStat.attackDelay -= _decreaseAttackDelayRate;
     }
+    public void Init()
+    {
+        _playerStat.Init();
+    }
 }
