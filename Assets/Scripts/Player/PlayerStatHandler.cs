@@ -23,6 +23,6 @@ public class PlayerStatHandler : MonoBehaviour
     }
     public void  DecreaseAttackDelay()
     {
-        _playerStat.attackDelay += _decreaseAttackDelayRate;
+        _playerStat.attackDelay -= _decreaseAttackDelayRate;
     }
 }
