@@ -124,19 +124,17 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 0;
         Pause.SetActive(true);
     }
-    public void OnClickGameOverBtn() // 게임오버 테스트용 버튼 메서드
+    public void OnClickGameSpeedUpBtn() // 플레이어 업그레이드 테스트용 버튼 메서드
     {
-        Time.timeScale = 0;
-        GameOver.SetActive(true);
-    }
-    public void OnClickPlayerUpgradeBtn() // 플레이어 업그레이드 테스트용 버튼 메서드
-    {
-        Time.timeScale = 0;
-        PlayerUpgrade.SetActive(true);
+        Time.timeScale = 15;
     }
     public void ShowGameOverUI()
     {
         Time.timeScale = 0;
         GameOver.SetActive(true);
+    }
+    public void ButtonSound()
+    {
+        AudioManager.Instance.PlaySound("Button");
     }
 }
