@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2816119239588013059}
   - component: {fileID: 8073108651664009647}
   - component: {fileID: -8218937626786950785}
+  - component: {fileID: 8512094895320574885}
   m_Layer: 7
   m_Name: Monster_Range
   m_TagString: Monster
@@ -76,8 +77,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0.7017373, b: 0, a: 1}
+  m_Sprite: {fileID: -1332827026, guid: f2af534c1c9056d40abc925b85224a78, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -176,3 +177,24 @@ MonoBehaviour:
   _maxHp: 0
   _moveSpeed: 0
   _bulletPrefab: {fileID: 377555468033281628, guid: 8ab7b6565df6aa44fa49a63cabd64b24, type: 3}
+--- !u!95 &8512094895320574885
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4111726059438551690}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9939d1ee2b6e3024e842a701d651ed87, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

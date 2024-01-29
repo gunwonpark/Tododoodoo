@@ -7,21 +7,18 @@ public class TopDownMovement : MonoBehaviour
 {
     PlayerStatHandler _playerStatHandler;
     TopDownCharacterController _characterController;
-    Rigidbody2D _rigidbody;
-    SpriteRenderer _characterSprite;
+    Rigidbody2D _rigidbody;    
     Vector2 _moveDirection;
    
     void Awake()
     {
         _characterController = gameObject.GetComponent<TopDownCharacterController>();
-        _rigidbody = gameObject.GetComponent<Rigidbody2D>();
-        _characterSprite = gameObject.GetComponentInChildren<SpriteRenderer>();
+        _rigidbody = gameObject.GetComponent<Rigidbody2D>();        
         _playerStatHandler = gameObject.GetComponent<PlayerStatHandler>();
     }
     private void Start()
     {
-        _characterController.OnMoveEvent += Move;
-        _characterController.OnLookEvent += Look;
+        _characterController.OnMoveEvent += Move;        
         _characterController.OnJumpEvent += Jump;
     }
 
@@ -34,10 +31,7 @@ public class TopDownMovement : MonoBehaviour
     {
         ApplayMovement();
     }
-    private void Look(Vector2 direction)
-    {
-        _characterSprite.flipX = (direction.x < 0);
-    }
+    
     void Move(Vector2 direction)
     {
         _moveDirection = direction;

@@ -10,7 +10,7 @@ public class Monster_Range : MonsterController
     private Transform _player;
     private float _cooldownTime;
 
-    private readonly float SHOOT_DELAY = 1f;
+    private readonly float SHOOT_DELAY = 3f;
 
     private void Update()
     {
@@ -31,9 +31,8 @@ public class Monster_Range : MonsterController
         go.transform.position = transform.position;
 
         Bullet bullet = go.GetComponent<Bullet>();        
-        Vector3 dir = _player.transform.position - transform.position;
-        bullet.Setup(Shooter.Monster, dir, 0.5f);
-        bullet._bulletDirection = dir;
+        Vector3 dir = (_player.transform.position - transform.position).normalized;
+        bullet.Setup(Shooter.Monster, dir, 2f);        
     }
 
     public override void Setup(ObstacleSpawner obstacleSpawner, Transform player)
