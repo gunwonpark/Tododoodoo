@@ -18,6 +18,10 @@ public class TopDownCharacterController : MonoBehaviour
     public bool IsDead { get; set; }
 
     private float _timeSinceLastAttack = float.MaxValue;
+
+
+    //test용 true일 경우 플레이어가 죽지 않는다
+    public bool _super;
     protected virtual void Awake()
     {
         _playerStatHandler = gameObject.GetComponent<PlayerStatHandler>();
@@ -62,7 +66,8 @@ public class TopDownCharacterController : MonoBehaviour
     }
     public void CallDeadEvent()
     {
-        OnDeadEvent?.Invoke();
+        if (_super != true)
+            OnDeadEvent?.Invoke();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
