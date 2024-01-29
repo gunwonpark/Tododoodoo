@@ -9,7 +9,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] Sprite enemySprite;
     [SerializeField] Sprite[] _bulletSprites;
 
-    private Shooter _shooter;
+    public Shooter shooter { get; set; }
     private Vector2 _bulletDirection;
 
     private Rigidbody2D _rigid;
@@ -31,12 +31,12 @@ public class Bullet : MonoBehaviour
 
         _bulletDirection = direction;
         _bulletSpeed = speed;
-        _shooter = shooter;
+        shooter = shooter;
         _spriteRenderer.sprite = enemySprite;
 
         _rigid.velocity = _bulletDirection * _bulletSpeed;
 
-        if (_shooter == Shooter.Player)
+        if (shooter == Shooter.Player)
             SetBulletSprite();
     }
 
@@ -53,11 +53,11 @@ public class Bullet : MonoBehaviour
         if (_isHit)
             return;        
         
-        if(_shooter == Shooter.Player && (collision.CompareTag("Monster")|| collision.CompareTag("Ground")))
+        if(shooter == Shooter.Player && (collision.CompareTag("Monster")|| collision.CompareTag("Ground")))
         {
-            AudioManager.Instance.PlaySound("Hit");
+            // AudioManager.Instance.PlaySound("Hit");
             _isHit = true;
-            gameObject.SetActive(false);
+            gameObject.SetActive(false); 
             if (collision.CompareTag("Monster"))
             {
                 MonsterController ob = collision.GetComponent<MonsterController>();
@@ -72,7 +72,7 @@ public class Bullet : MonoBehaviour
                 }
             }
         }
-        else if(_shooter == Shooter.Monster && (collision.CompareTag("Player") || collision.CompareTag("Ground")))
+        else if(shooter == Shooter.Monster && (collision.CompareTag("Player") || collision.CompareTag("Ground")))
         {
             AudioManager.Instance.PlaySound("Hit");
             gameObject.SetActive(false);

@@ -45,6 +45,9 @@ public class UIManager : MonoBehaviour
         audioMixer.SetFloat("Master", Mathf.Log10(PlayerPrefs.GetFloat("MasterVolume")) * 20);
         audioMixer.SetFloat("BGM", Mathf.Log10(PlayerPrefs.GetFloat("BgmVolume")) * 20);
         audioMixer.SetFloat("SFX", Mathf.Log10(PlayerPrefs.GetFloat("SfxVolume")) * 20);
+
+        //event 저장
+        GameManager.Instance.Player.GetComponent<TopDownCharacterController>().OnDeadEvent += ShowGameOverUI;
     }
     // 볼륨 조절 및 셋팅값 저장
     public void SetMasterVolume(float value)
@@ -124,5 +127,10 @@ public class UIManager : MonoBehaviour
     {
         Time.timeScale = 0;
         PlayerUpgrade.SetActive(true);
+    }
+    public void ShowGameOverUI()
+    {
+        Time.timeScale = 0;
+        GameOver.SetActive(true);       
     }
 }

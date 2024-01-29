@@ -8,22 +8,28 @@ public class TopDownCharacterController : MonoBehaviour
     public event Action<Vector2> OnMoveEvent;
     public event Action<Vector2> OnLookEvent;
     public event Action<PlayerStat> OnAttackEvent;
+    public event Action OnDeadEvent;
     public event Action OnJumpEvent;
 
     protected Rigidbody2D _rigid;
     [SerializeField] PlayerStatHandler _playerStatHandler;
     public bool IsAttacking { get; set; }
     protected bool IsJumping { get; set; }
+    public bool IsDead { get; set; }
 
-private float _timeSinceLastAttack = float.MaxValue;
+    private float _timeSinceLastAttack = float.MaxValue;
     protected virtual void Awake()
     {
         _playerStatHandler = gameObject.GetComponent<PlayerStatHandler>();
         _rigid = GetComponent<Rigidbody2D>();
-}
+    }
     protected virtual void Update()
     {
         HandleAttackDelay();
+        if (IsDead)
+        {
+            CallDeadEvent();
+        }
     }
     public void CallMoveEvent(Vector2 direction)
     {
@@ -39,7 +45,7 @@ private float _timeSinceLastAttack = float.MaxValue;
         {
             _timeSinceLastAttack += Time.deltaTime;
         }
-        
+
         if (IsAttacking && _timeSinceLastAttack > _playerStatHandler._playerStat.attackDelay)
         {
             _timeSinceLastAttack = 0;
@@ -53,5 +59,26 @@ private float _timeSinceLastAttack = float.MaxValue;
     public void CallJumpEvent()
     {
         OnJumpEvent?.Invoke();
+    }
+    public void CallDeadEvent()
+    {
+        OnDeadEvent?.Invoke();
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Monster") || (collision.CompareTag("Razer")))
+        {
+            IsDead = true;
+            return;
+        }
+        
+        if (collision.CompareTag("Bullet"))
+        {
+            Bullet bullet = collision.gameObject.GetComponent<Bullet>();
+            if (bullet != null && bullet.shooter == Shooter.Monster)
+            {
+                IsDead = true;
+            }
+        }
     }
 }

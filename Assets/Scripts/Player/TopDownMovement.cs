@@ -20,6 +20,7 @@ public class TopDownMovement : MonoBehaviour
     {
         _characterController.OnMoveEvent += Move;        
         _characterController.OnJumpEvent += Jump;
+        _characterController.OnDeadEvent += Dead;
     }
 
     private void Jump()
@@ -41,5 +42,9 @@ public class TopDownMovement : MonoBehaviour
         //Debug.Log(_playerStatHandler._playerStat.moveSpeed);
         
         _rigidbody.velocity = new Vector2(_moveDirection.x * _playerStatHandler._playerStat.moveSpeed, _rigidbody.velocity.y);
+    }
+    void Dead()
+    {
+        gameObject.SetActive(false);
     }
 }
