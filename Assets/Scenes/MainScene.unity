@@ -3454,6 +3454,7 @@ MonoBehaviour:
   masterVolume_slider: {fileID: 551773365}
   bgm_slider: {fileID: 273299169}
   sfx_slider: {fileID: 1481843308}
+  Player: {fileID: 971395006}
 --- !u!114 &837146648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4149,6 +4150,11 @@ Transform:
   m_Father: {fileID: 1995038839}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &971395006 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 297179842086279211, guid: 3e12b94f7770b6643aefc0f43272b6bd, type: 3}
+  m_PrefabInstance: {fileID: 349271417}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &972823488
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,18 +16,17 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject PlayerUpgrade;
     [SerializeField] private GameObject GameOver;
     // 오디오믹서, 볼륨조절 슬라이드
-    [Header("Volume Slider")]
+    [Header("AudioMixer & Volume Slider")]
     [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private Slider masterVolume_slider;
     [SerializeField] private Slider bgm_slider;
     [SerializeField] private Slider sfx_slider;
-
-    public static UIManager Instance;
+    // 플레이어
+    [Header("Player")]
+    [SerializeField] private GameObject Player;
 
     private void Awake()
     {
-        Instance = this;
-
         masterVolume_slider = masterVolume_slider.GetComponent<Slider>();
         bgm_slider = bgm_slider.GetComponent<Slider>();
         sfx_slider = sfx_slider.GetComponent<Slider>();
@@ -88,7 +87,13 @@ public class UIManager : MonoBehaviour
     }
     public void OnClickMainScreenBtn()
     {
-        SceneManager.LoadScene("MainScene");
+        GameExit.SetActive(false);
+        PlayScreen.SetActive(false);
+        MainScreen.SetActive(true);
+        Player.SetActive(false);
+        GameManager.Instance.currentState = GameManager.State.Dead;
+        GameManager.Instance.stageCount = 1;
+        AudioManager.Instance.PlayBgm("Main");
         Time.timeScale = 1.0f;
     }
     public void OnClickCancelBtn()
@@ -108,7 +113,11 @@ public class UIManager : MonoBehaviour
     }
     public void OnClickGameExitBtn()
     {
-        SceneManager.LoadScene("MainScene");
+        GameOver.SetActive(false);
+        PlayScreen.SetActive(false);
+        MainScreen.SetActive(true);
+        GameManager.Instance.stageCount = 1;
+        AudioManager.Instance.PlayBgm("Main");
         Time.timeScale = 1.0f;
     }
     public void OnClickPause()
@@ -129,6 +138,6 @@ public class UIManager : MonoBehaviour
     public void ShowGameOverUI()
     {
         Time.timeScale = 0;
-        GameOver.SetActive(true);       
+        GameOver.SetActive(true);
     }
 }
