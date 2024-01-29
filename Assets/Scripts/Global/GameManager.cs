@@ -73,6 +73,7 @@ public class GameManager : MonoBehaviour
                 _stageController.ResetCur();
                 StopAllCoroutines();
                 _reward.ClearStats();
+                stageCount = 1;
                 Instance.currentState = State.Wait;
                 break;
         }
