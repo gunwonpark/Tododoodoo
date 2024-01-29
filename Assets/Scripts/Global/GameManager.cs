@@ -72,6 +72,7 @@ public class GameManager : MonoBehaviour
                 _stageController.StopStage();
                 _stageController.ResetCur();
                 StopAllCoroutines();
+                _reward.ClearStats();
                 Instance.currentState = State.Wait;
                 break;
         }

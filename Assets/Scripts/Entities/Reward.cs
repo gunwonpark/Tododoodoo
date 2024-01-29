@@ -56,4 +56,10 @@ public class Reward : MonoBehaviour
         rewardWindow.SetActive(false);
         Time.timeScale = 1f;
     }
+    public void ClearStats()
+    {
+        attackUpgradeCount = 0;
+        speedUpgradeCount = 0;
+        jumpUpgradeCount = 0;
+    }
 }
