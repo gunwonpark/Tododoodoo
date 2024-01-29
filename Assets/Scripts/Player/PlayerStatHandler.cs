@@ -12,23 +12,17 @@ public class PlayerStatHandler : MonoBehaviour
     [SerializeField] float _increaseMoveSpeedRate = 0.2f;
     [SerializeField] float _increaseJumpDegreeRate = 0.2f;
     [SerializeField] float _decreaseAttackDelayRate = 0.02f;
-    [SerializeField] Text MoveSpeed;
-    [SerializeField] Text JumpDegree;
-    [SerializeField] Text AttackDelay;
 
     public void IncreaseMoveSpeed()
     {
         _playerStat.moveSpeed += _increaseMoveSpeedRate;
-        MoveSpeed.text = Mathf.Round(_playerStat.moveSpeed).ToString();
     }
     public void IncreaseJumpDegree()
     {
         _playerStat.jumpDegree += _increaseJumpDegreeRate;
-        JumpDegree.text = Mathf.Round(_playerStat.jumpDegree).ToString();
     }
     public void  DecreaseAttackDelay()
     {
         _playerStat.attackDelay += _decreaseAttackDelayRate;
-        AttackDelay.text = Mathf.Round(_playerStat.attackDelay).ToString();
     }
 }

@@ -88,7 +88,7 @@ public class UIManager : MonoBehaviour
     }
     public void OnClickMainScreenBtn()
     {
-        SceneManager.LoadScene("UI");
+        SceneManager.LoadScene("MainScene");
         Time.timeScale = 1.0f;
     }
     public void OnClickCancelBtn()
@@ -108,9 +108,7 @@ public class UIManager : MonoBehaviour
     }
     public void OnClickGameExitBtn()
     {
-        GameOver.SetActive(false);
-        PlayScreen.SetActive(false);
-        MainScreen.SetActive(true);
+        SceneManager.LoadScene("MainScene");
         Time.timeScale = 1.0f;
     }
     public void OnClickPause()

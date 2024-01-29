@@ -715,9 +715,9 @@ MonoBehaviour:
   upgradeBtn1: {fileID: 1100061972}
   upgradeBtn2: {fileID: 2086563219}
   upgradeBtn3: {fileID: 96910679}
-  attackUpgradeCount: 0
-  speedUpgradeCount: 0
-  jumpUpgradeCount: 0
+  AttackDelay: {fileID: 2032658576}
+  MoveSpeed: {fileID: 392864558}
+  JumpDegree: {fileID: 1242892845}
 --- !u!224 &65570147
 RectTransform:
   m_ObjectHideFlags: 0
@@ -755,7 +755,7 @@ GameObject:
   - component: {fileID: 96910680}
   - component: {fileID: 96910679}
   m_Layer: 5
-  m_Name: MoveSpeedupgradeBtn
+  m_Name: JumpUpBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1844,7 +1844,7 @@ GameObject:
   - component: {fileID: 392864559}
   - component: {fileID: 392864558}
   m_Layer: 5
-  m_Name: Stat2Txt
+  m_Name: Speed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4692,7 +4692,7 @@ GameObject:
   - component: {fileID: 1100061973}
   - component: {fileID: 1100061972}
   m_Layer: 5
-  m_Name: JumpUpgradeBtn
+  m_Name: AttackUpBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5513,7 +5513,7 @@ GameObject:
   - component: {fileID: 1242892846}
   - component: {fileID: 1242892845}
   m_Layer: 5
-  m_Name: Stat3Txt
+  m_Name: Jump
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6761,7 +6761,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 0
+  m_Text: 1
 --- !u!222 &1436459938
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8523,7 +8523,7 @@ GameObject:
   - component: {fileID: 2032658577}
   - component: {fileID: 2032658576}
   m_Layer: 5
-  m_Name: Stat1Txt
+  m_Name: Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8938,7 +8938,7 @@ GameObject:
   - component: {fileID: 2086563220}
   - component: {fileID: 2086563219}
   m_Layer: 5
-  m_Name: AttakDelayupgradeBtn
+  m_Name: SpeedUpBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
