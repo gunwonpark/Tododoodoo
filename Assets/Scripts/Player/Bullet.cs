@@ -35,6 +35,7 @@ public class Bullet : MonoBehaviour
         _spriteRenderer.sprite = enemySprite;
 
         _rigid.velocity = _bulletDirection * _bulletSpeed;
+        _rigid.AddTorque(300);
 
         if (shooter == Shooter.Player)
             SetBulletSprite();
