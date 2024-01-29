@@ -4,11 +4,13 @@ using UnityEngine.InputSystem;
 public class PlayerInputController : TopDownCharacterController
 {
     LayerMask target;
+    PlayerInput playerInput;
     
     protected override void Awake()
     {
         base.Awake();
         target = LayerMask.GetMask("Ground");
+        playerInput = GetComponent<PlayerInput>();
     }
     protected override void Update()
     {
@@ -21,7 +23,7 @@ public class PlayerInputController : TopDownCharacterController
                 IsJumping = false;
             }
         }
-        
+        NewOnLook();
     }
     // 눌렀을때 한번 뗐을때 한번 호출
     public void OnMove(InputValue value)
@@ -30,9 +32,16 @@ public class PlayerInputController : TopDownCharacterController
         CallMoveEvent(direction);
     }
     // 마우스가 이동 할 때 마다 호출
-    public void OnLook(InputValue value)
+    //public void OnLook(InputValue value)
+    //{
+    //    Vector2 mousePosition = value.Get<Vector2>();
+    //    mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+    //    Vector2 direction = mousePosition - (Vector2)transform.position;
+    //    CallLookEvent(direction);
+    //}
+    public void NewOnLook()
     {
-        Vector2 mousePosition = value.Get<Vector2>();
+        Vector2 mousePosition = playerInput.actions.FindAction("Look").ReadValue<Vector2>();
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
         Vector2 direction = mousePosition - (Vector2)transform.position;
         CallLookEvent(direction);
