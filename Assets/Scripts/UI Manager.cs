@@ -7,15 +7,16 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {   // UI
+    [Header("UI")]
     [SerializeField] private GameObject MainScreen;
     [SerializeField] private GameObject Options;
-    [SerializeField] private GameObject ResultScreen;
     [SerializeField] private GameObject Pause;
     [SerializeField] private GameObject GameExit;
     [SerializeField] private GameObject PlayScreen;
     [SerializeField] private GameObject PlayerUpgrade;
     [SerializeField] private GameObject GameOver;
     // 오디오믹서, 볼륨조절 슬라이드
+    [Header("Volume Slider")]
     [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private Slider masterVolume_slider;
     [SerializeField] private Slider bgm_slider;
@@ -66,6 +67,7 @@ public class UIManager : MonoBehaviour
     {
         MainScreen.SetActive(false);
         PlayScreen.SetActive(true);
+        AudioManager.Instance.PlayBgm("Playing");
     }
     public void OnClickOptionsBtn()
     {
@@ -95,11 +97,6 @@ public class UIManager : MonoBehaviour
         Pause.SetActive(false);
         Time.timeScale = 1.0f;
     }
-    public void OnClickResultScreenExitBtn()
-    {
-        SceneManager.LoadScene("UI");
-        Time.timeScale = 1.0f;
-    }
     public void OnClickUpgradeBtn()
     {
         PlayerUpgrade.SetActive(false);
@@ -109,7 +106,8 @@ public class UIManager : MonoBehaviour
     {
         GameOver.SetActive(false);
         PlayScreen.SetActive(false);
-        ResultScreen.SetActive(true);
+        MainScreen.SetActive(true);
+        Time.timeScale = 1.0f;
     }
     public void OnClickPause()
     {
