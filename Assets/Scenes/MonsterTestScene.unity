@@ -838,7 +838,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &177751390
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1401,7 +1401,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &335826162
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3777,7 +3777,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MainScreen: {fileID: 335826161}
   Options: {fileID: 1361373623}
-  ResultScreen: {fileID: 753706108}
   Pause: {fileID: 1223040162}
   GameExit: {fileID: 2093965260}
   PlayScreen: {fileID: 177751389}
@@ -4616,6 +4615,7 @@ MonoBehaviour:
   isPlaying: 0
   currentState: 0
   stageCount: 0
+  StageCountTxt: {fileID: 0}
 --- !u!4 &1224951121
 Transform:
   m_ObjectHideFlags: 0
@@ -4737,10 +4737,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43c5d7dce40d28b4e81b22472dab054c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bgm_player: {fileID: 1936080438}
   bgm_clips:
   - {fileID: 8300000, guid: 90eae78e8ce85a849b5b0ca11b2de641, type: 3}
   - {fileID: 8300000, guid: 89994e4794404214da0ceadf6ec16978, type: 3}
-  bgm_player: {fileID: 1936080438}
   sfx_clips:
   - {fileID: 8300000, guid: 881e3f52c86c94f26a60718d35627cd8, type: 3}
   - {fileID: 8300000, guid: b43d102aac6b145468dcaa94a5cccae1, type: 3}
@@ -7401,7 +7401,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1, y: 10}
-    newSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 10}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -7455,7 +7455,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 10}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -7714,7 +7714,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.08, y: 3.2}
+  m_Size: {x: 0.25, y: 10}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -9339,7 +9339,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1, y: 10}
-    newSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 10}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -9393,7 +9393,7 @@ SpriteRenderer:
   m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 10}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
