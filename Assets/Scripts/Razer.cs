@@ -66,7 +66,7 @@ public class Razer : MonoBehaviour
             {
                 Obstacle obs = hit.transform.GetComponent<Obstacle>();
                 if (obs != null)
-                    obs.ForceBreak();
+                    obs.GetDamage(float.MaxValue);
             }
         }
 
