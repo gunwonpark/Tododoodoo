@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3282694051563057408}
   - component: {fileID: 55430825456097081}
-  - component: {fileID: 3789536429007268504}
   - component: {fileID: 7350848836021912439}
   - component: {fileID: 2116112578761074566}
   - component: {fileID: 6349219455921773148}
@@ -56,19 +55,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerStatHandler: {fileID: 0}
---- !u!114 &3789536429007268504
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 297179842086279211}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8b36a6939449d04a9ade559e9ca7db4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _playerStatHandler: {fileID: 0}
+  _super: 0
 --- !u!114 &7350848836021912439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,6 +180,9 @@ MonoBehaviour:
   _increaseMoveSpeedRate: 0.2
   _increaseJumpDegreeRate: 0.2
   _decreaseAttackDelayRate: 0.02
+  MoveSpeed: {fileID: 0}
+  JumpDegree: {fileID: 0}
+  AttackDelay: {fileID: 0}
 --- !u!114 &785048253734619587
 MonoBehaviour:
   m_ObjectHideFlags: 0
