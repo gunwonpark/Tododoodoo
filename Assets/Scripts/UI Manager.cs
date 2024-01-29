@@ -139,4 +139,8 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 0;
         GameOver.SetActive(true);
     }
+    public void ButtonSound()
+    {
+        AudioManager.Instance.PlaySound("Button");
+    }
 }
