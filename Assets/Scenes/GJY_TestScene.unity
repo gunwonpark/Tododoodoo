@@ -2894,7 +2894,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blockPrefab: {fileID: 867924507483268056, guid: 7d5b57bd9304dcf49bab695d66e5f145, type: 3}
   _spawnPointsRoot: {fileID: 1995038839}
-  lazer: {fileID: 1081741968}
+  lazer: {fileID: 0}
   _spawnNum: 1
   _spawnDelay: 1.2
   _spawnLaserDelay: 3
@@ -4421,10 +4421,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lazer
       objectReference: {fileID: 0}
-    - target: {fileID: 1963783816883626080, guid: df2313f7a12997a4a998fa6d73b44df4, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -5
-      objectReference: {fileID: 0}
     - target: {fileID: 2407801566964817547, guid: df2313f7a12997a4a998fa6d73b44df4, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -4469,26 +4465,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8643854345009078364, guid: df2313f7a12997a4a998fa6d73b44df4, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df2313f7a12997a4a998fa6d73b44df4, type: 3}
---- !u!114 &1081741968 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4411119359211534045, guid: df2313f7a12997a4a998fa6d73b44df4, type: 3}
-  m_PrefabInstance: {fileID: 1081741967}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65e9ae9bb1c898f47ba6dfb82656cada, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1084846839
 GameObject:
   m_ObjectHideFlags: 0
