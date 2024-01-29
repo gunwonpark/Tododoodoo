@@ -68,7 +68,5 @@ public class Obstacle : MonoBehaviour, IDamagable
         _effect.SpawnEffect();        
 
         gameObject.SetActive(false);
-    }
-
-    private void MoveDown() => transform.position += Vector3.down;
+    }    
 }

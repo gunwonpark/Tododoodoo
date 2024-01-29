@@ -9,22 +9,24 @@ public class Razer : MonoBehaviour
 {
     [SerializeField] Transform _warning;
     [SerializeField] Transform _lazer;
-    
+    [SerializeField] Collider2D _coll;
+
     [SerializeField] float layTime;
-    [SerializeField] float warningTime;
+    [SerializeField] float warningTime;    
 
     private int warningCount;
 
-    private readonly int WARNING = 4;
+    private readonly int    WARNING     = 4;
+    private readonly float  RAY_DEALY   = 0.5f;
 
     public void SetupLazer(float appearPosX)
     {
         transform.position = new Vector3(appearPosX, 5, 0);
 
-        StartCoroutine(StartRay(1, 0));
+        StartCoroutine(Warning(1, 0));
     }
 
-    private IEnumerator StartRay(float start, float end)
+    private IEnumerator Warning(float start, float end)
     {
         _warning.gameObject.SetActive(true);
         SpriteRenderer warningRenderer = _warning.GetComponent<SpriteRenderer>();
@@ -47,28 +49,21 @@ public class Razer : MonoBehaviour
         {
             warningCount = 0;
             _warning.gameObject.SetActive(false);
+
+            yield return new WaitForSeconds(RAY_DEALY);
+
             StartCoroutine(LazerAppear());
         }
         else
         {
             warningCount++;
-            StartCoroutine(StartRay(end, start));            
+            StartCoroutine(Warning(end, start));            
         }            
     }
 
     private IEnumerator LazerAppear()
     {
-        _lazer.gameObject.SetActive(true);
-        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, Vector2.down, 20f, LayerMask.GetMask("Ground"));
-        if(hits.Length > 0)
-        {
-            foreach(var hit in hits)
-            {
-                Obstacle obs = hit.transform.GetComponent<Obstacle>();
-                if (obs != null)
-                    obs.GetDamage(float.MaxValue);
-            }
-        }
+        _lazer.gameObject.SetActive(true);        
 
         float current = 0;
         float percent = 0;
@@ -86,7 +81,11 @@ public class Razer : MonoBehaviour
             yield return null;
         }
 
+        _coll.enabled = true;
+
         yield return new WaitForSeconds(0.5f);
+
+        _coll.enabled = false;
 
         StartCoroutine(LazerDisappear());
     }
@@ -110,6 +109,6 @@ public class Razer : MonoBehaviour
         }
         _lazer.localScale = Vector3.zero;
 
-        _lazer.gameObject.SetActive(false);
+        _lazer.gameObject.SetActive(false);        
     }
 }

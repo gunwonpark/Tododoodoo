@@ -715,9 +715,9 @@ MonoBehaviour:
   upgradeBtn1: {fileID: 1100061972}
   upgradeBtn2: {fileID: 2086563219}
   upgradeBtn3: {fileID: 96910679}
-  attackUpgradeCount: 0
-  speedUpgradeCount: 0
-  jumpUpgradeCount: 0
+  AttackDelay: {fileID: 0}
+  MoveSpeed: {fileID: 0}
+  JumpDegree: {fileID: 0}
 --- !u!224 &65570147
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3447,10 +3447,15 @@ MonoBehaviour:
   PlayScreen: {fileID: 2043472082}
   PlayerUpgrade: {fileID: 65570145}
   GameOver: {fileID: 1978540979}
+  StageCount: {fileID: 0}
+  AttackCount: {fileID: 0}
+  JumpCount: {fileID: 0}
+  SpeedCount: {fileID: 0}
   audioMixer: {fileID: 24100000, guid: 218ce74cd4697ef4ea46a51b178cc51b, type: 2}
   masterVolume_slider: {fileID: 551773365}
   bgm_slider: {fileID: 273299169}
   sfx_slider: {fileID: 1481843308}
+  Player: {fileID: 0}
 --- !u!114 &837146648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4924,7 +4929,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 6876791809430838803, guid: 218ce74cd4697ef4ea46a51b178cc51b, type: 2}
   m_audioClip: {fileID: 8300000, guid: 89994e4794404214da0ceadf6ec16978, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 1
   Mute: 0
