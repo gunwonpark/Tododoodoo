@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour
     public enum State
     {
         Ready,
-        Play,
         Reward,
         Wait,
     }
@@ -41,7 +40,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentState = State.Ready;
+        currentState = State.Wait;
         stageCount = 0;
     }
 
@@ -58,18 +57,12 @@ public class GameManager : MonoBehaviour
         {
             case State.Ready:
                 StartCoroutine(StartStage());
-                currentState = State.Play;
-                break;
-
-            case State.Play:
-                break;
-
-            case State.Reward:
-                _reward.StartReward();
+                currentState = State.Wait;
                 break;
             case State.Wait:
                 break;
-            default:
+            case State.Reward:
+                _reward.StartReward();
                 break;
         }
     }

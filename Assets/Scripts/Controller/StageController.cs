@@ -51,13 +51,6 @@ public class StageController : MonoBehaviour
         _currentSpawnLaserDelay = _spawnLaserDelay;
         _currentTypeOfMonster = _typeOfMonster;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void StartStage(int stageCount)
     {
         InitStageValue(stageCount);
@@ -75,6 +68,7 @@ public class StageController : MonoBehaviour
         ObjectPool.i.DestroyAll("Block");
         ObjectPool.i.DestroyAll("WarringLine");
         ObjectPool.i.DestroyAll("Razer");
+        ObjectPool.i.DestroyAll("Bullet");
     }
 
     // 스테이지에 따른 스폰관련 변수 변경
