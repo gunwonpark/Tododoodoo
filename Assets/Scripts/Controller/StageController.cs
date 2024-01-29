@@ -11,6 +11,8 @@ public class StageController : MonoBehaviour
     ObstacleSpawner obstacleSpawner;
     private List<Transform> _spawnPoints = new List<Transform>();
 
+    [SerializeField] Razer lazer;
+
     // 스폰 관련 시작 변수
     [Header("Spawn Value")]
     [SerializeField] private int _spawnNum;
@@ -55,7 +57,7 @@ public class StageController : MonoBehaviour
     {
         InitStageValue(stageCount);
         StartCoroutine(SpawnMonster());
-        StartCoroutine(SpawnRazer());
+        StartCoroutine(SpawnRazer());        
     }
 
     public void StopStage()
@@ -65,9 +67,7 @@ public class StageController : MonoBehaviour
         {
             ObjectPool.i.DestroyAll(spawnMonsterType[i]);
         }
-        ObjectPool.i.DestroyAll("Block");
-        ObjectPool.i.DestroyAll("WarringLine");
-        ObjectPool.i.DestroyAll("Razer");
+        ObjectPool.i.DestroyAll("Block");        
         ObjectPool.i.DestroyAll("Bullet");
     }
 
@@ -143,14 +143,7 @@ public class StageController : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(_currentSpawnLaserDelay);//레이저 주기
-            GameObject warringLine = ObjectPool.i.GetFromPool("WarringLine");
-            warringLine.transform.position = GameManager.Instance.Player.position;//PlayerPosition;
-            yield return new WaitForSeconds(1);// 경고 시간
-            warringLine.SetActive(false);
-            GameObject Razer = ObjectPool.i.GetFromPool("Razer");
-            Razer.transform.position = new Vector3(warringLine.transform.position.x, warringLine.transform.position.y + 50, warringLine.transform.position.z);
-            yield return new WaitForSeconds(1);//유지시간
-            Razer.SetActive(false);
+            lazer.SetupLazer(GameManager.Instance.Player.transform.position.x);
         }
     }
 }

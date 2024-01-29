@@ -69,6 +69,12 @@ public class Obstacle : MonoBehaviour, IDamagable
         gameObject.SetActive(false);
     }
 
+    public void ForceBreak()
+    {
+        _effect.SpawnEffect();
+        gameObject.SetActive(false);
+    }
+
     private void CheckMyUpPosition()
     {
         Vector2 startRay = transform.position + Vector3.up;
