@@ -1,28 +1,115 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Razer : MonoBehaviour
 {
-    Rigidbody2D _rigi;
-    [SerializeField] LayerMask lay;
-    private void Awake()
+    [SerializeField] Transform _warning;
+    [SerializeField] Transform _lazer;
+    
+    [SerializeField] float layTime;
+    [SerializeField] float warningTime;
+
+    private int warningCount;
+
+    private readonly int WARNING = 4;
+
+    public void SetupLazer(float appearPosX)
     {
-        _rigi = GetComponent<Rigidbody2D>();
+        transform.position = new Vector3(appearPosX, 5, 0);
+
+        StartCoroutine(StartRay(1, 0));
     }
-    private void OnEnable()
+
+    private IEnumerator StartRay(float start, float end)
     {
-        _rigi.AddForce(Vector2.down * 3500);
+        _warning.gameObject.SetActive(true);
+        SpriteRenderer warningRenderer = _warning.GetComponent<SpriteRenderer>();
+        Debug.Log(warningCount);
+
+        float currntTime = 0;
+        float percent = 0;
+        while (percent < 1)
+        {
+            currntTime += Time.deltaTime;
+            percent = currntTime / warningTime;
+
+            Color color = warningRenderer.color;
+            color.a = Mathf.Lerp(start, end, percent);
+            warningRenderer.color = color;
+            yield return null;
+        }
+
+        if (warningCount == WARNING)
+        {
+            warningCount = 0;
+            _warning.gameObject.SetActive(false);
+            StartCoroutine(LazerAppear());
+        }
+        else
+        {
+            warningCount++;
+            StartCoroutine(StartRay(end, start));            
+        }            
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+
+    private IEnumerator LazerAppear()
     {
-        if (collision.gameObject.tag == "Ground")
+        _lazer.gameObject.SetActive(true);
+        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, Vector2.down, 20f, LayerMask.GetMask("Ground"));
+        if(hits.Length > 0)
         {
-            collision.GetComponent<Obstacle>()?.GetDamage(200);
+            foreach(var hit in hits)
+            {
+                Obstacle obs = hit.transform.GetComponent<Obstacle>();
+                if (obs != null)
+                    obs.GetDamage(float.MaxValue);
+            }
         }
-        if (collision.gameObject.layer == lay)
+
+        float current = 0;
+        float percent = 0;
+
+        Vector3 startScale = new Vector3(0, 10, 0);
+        Vector3 endScale = new Vector3(0.5f, 10, 0);
+
+        while (percent < 1)
         {
-            _rigi.velocity = Vector2.zero;
+            current += Time.deltaTime;
+            percent = current / layTime;
+
+            _lazer.localScale = Vector3.Lerp(startScale, endScale, percent);
+
+            yield return null;
         }
+
+        yield return new WaitForSeconds(0.5f);
+
+        StartCoroutine(LazerDisappear());
+    }
+
+    private IEnumerator LazerDisappear()
+    {
+        float current = 0;
+        float percent = 0;
+
+        Vector3 startScale = new Vector3(0.5f, 10, 0);
+        Vector3 endScale = new Vector3(0, 10, 0);
+
+        while (percent < 1)
+        {
+            current += Time.deltaTime;
+            percent = current / layTime;
+
+            _lazer.localScale = Vector3.Lerp(startScale, endScale, percent);
+
+            yield return null;
+        }
+        _lazer.localScale = Vector3.zero;
+
+        _lazer.gameObject.SetActive(false);
     }
 }

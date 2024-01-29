@@ -38,6 +38,9 @@ public class Obstacle : MonoBehaviour, IDamagable
 
     public void GetDamage(float damage)
     {
+        if (_isBroken)
+            return;
+
         _hp -= damage;
         HPCheckAndChangeSprite();
 
@@ -62,25 +65,10 @@ public class Obstacle : MonoBehaviour, IDamagable
     {        
         _isBroken = true;
         _rend.sprite = _effect.SpriteChange((int)HPState.High);
-        _effect.SpawnEffect();
-
-        CheckMyUpPosition();
+        _effect.SpawnEffect();        
 
         gameObject.SetActive(false);
     }
-
-    private void CheckMyUpPosition()
-    {
-        Vector2 startRay = transform.position + Vector3.up;
-        RaycastHit2D hit = Physics2D.Raycast(startRay, Vector2.one, 0.5f);
-        Debug.DrawRay(startRay, Vector2.one * 0.5f, Color.red);
-
-        if (hit && hit.collider.CompareTag("Ground"))
-            hit.transform.GetComponent<Obstacle>().CheckMyUpPosition();
-
-        if (!_isBroken)
-            MoveDown();
-    }    
 
     private void MoveDown() => transform.position += Vector3.down;
 }
