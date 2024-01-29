@@ -32,7 +32,7 @@ public class PlayerAttack : MonoBehaviour
         bool canShoot = !(degree < -playerStat.attakRange && degree > playerStat.attakRange - 180f);
         if (canShoot)
         {
-            //AudioManager.Instance.PlaySound("Shot");
+            AudioManager.Instance.PlaySound("Shot");
             GameObject go = ObjectPool.i.GetFromPool("Bullet");
             go.transform.position = bulletPos.position;
             Bullet bullet = go.GetComponent<Bullet>();

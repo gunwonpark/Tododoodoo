@@ -14,6 +14,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject PlayScreen;
     [SerializeField] private GameObject PlayerUpgrade;
     [SerializeField] private GameObject GameOver;
+    [SerializeField] private Text StageCount;
+    [SerializeField] private Text AttackCount;
+    [SerializeField] private Text JumpCount;
+    [SerializeField] private Text SpeedCount;
     // 오디오믹서, 볼륨조절 슬라이드
     [Header("AudioMixer & Volume Slider")]
     [SerializeField] private AudioMixer audioMixer;
@@ -68,6 +72,11 @@ public class UIManager : MonoBehaviour
     {
         MainScreen.SetActive(false);
         PlayScreen.SetActive(true);
+        GameManager.Instance.stageCount = 1;
+        StageCount.text = "1";
+        AttackCount.text = "0+";
+        SpeedCount.text = "0+";
+        JumpCount.text = "0+";
         GameManager.Instance.currentState = GameManager.State.Ready;
         AudioManager.Instance.PlayBgm("Playing");
     }
@@ -91,7 +100,6 @@ public class UIManager : MonoBehaviour
         MainScreen.SetActive(true);
         Player.SetActive(false);
         GameManager.Instance.currentState = GameManager.State.Dead;
-        GameManager.Instance.stageCount = 1;
         AudioManager.Instance.PlayBgm("Main");
         Time.timeScale = 1.0f;
     }
@@ -115,7 +123,6 @@ public class UIManager : MonoBehaviour
         GameOver.SetActive(false);
         PlayScreen.SetActive(false);
         MainScreen.SetActive(true);
-        GameManager.Instance.stageCount = 1;
         AudioManager.Instance.PlayBgm("Main");
         Time.timeScale = 1.0f;
     }

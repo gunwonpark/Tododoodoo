@@ -31,7 +31,7 @@ public class Bullet : MonoBehaviour
 
         _bulletDirection = direction;
         _bulletSpeed = speed;
-        shooter = shooter;
+        this.shooter = shooter;
         _spriteRenderer.sprite = enemySprite;
 
         _rigid.velocity = _bulletDirection * _bulletSpeed;
@@ -55,7 +55,7 @@ public class Bullet : MonoBehaviour
         
         if(shooter == Shooter.Player && (collision.CompareTag("Monster")|| collision.CompareTag("Ground")))
         {
-            // AudioManager.Instance.PlaySound("Hit");
+            AudioManager.Instance.PlaySound("Hit");
             _isHit = true;
             gameObject.SetActive(false); 
             if (collision.CompareTag("Monster"))
@@ -74,7 +74,6 @@ public class Bullet : MonoBehaviour
         }
         else if(shooter == Shooter.Monster && (collision.CompareTag("Player") || collision.CompareTag("Ground")))
         {
-            AudioManager.Instance.PlaySound("Hit");
             gameObject.SetActive(false);
         }
     }
