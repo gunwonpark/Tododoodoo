@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Reward _reward;
     [SerializeField] private UIEffectManager _effectManager;
     [SerializeField] private GaugeController _gaugeController;
-
+    private RankingSystem _rankingSystem = new RankingSystem();
     // stage 클리어까지 필요한 시간
     [SerializeField] private float timeForWeek;
 
@@ -43,6 +43,12 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        PlayerPrefs.DeleteAll();
+        _rankingSystem.LoadRankings();
+        // Debuging
+        _rankingSystem.AddPlayerScore("gkgk", 244);
+        _rankingSystem.AddPlayerScore("wwww", 244);
+        _rankingSystem.ShowScores();
         currentState = State.Wait;
         stageCount = 1;
         AudioManager.Instance.PlayBgm("Main");
