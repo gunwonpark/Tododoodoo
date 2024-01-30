@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7537d0a47fc00f943a1db266b575e0c1, type: 3}
   m_Name: Creature_Rush
   m_EditorClassIdentifier: 
-  hp: 10
+  sprite: {fileID: 0}
+  hp: 20
   speed: 2
