@@ -162,10 +162,14 @@ MonoBehaviour:
   PlayScreen: {fileID: 596076233}
   PlayerUpgrade: {fileID: 2017102546}
   GameOver: {fileID: 588385496}
+  Rank: {fileID: 0}
   StageCount: {fileID: 169116479}
   AttackCount: {fileID: 759648529}
   JumpCount: {fileID: 1777832702}
   SpeedCount: {fileID: 523903156}
+  rankingList: {fileID: 0}
+  rankingText: {fileID: 0}
+  RankingName: {fileID: 0}
   audioMixer: {fileID: 24100000, guid: 218ce74cd4697ef4ea46a51b178cc51b, type: 2}
   masterVolume_slider: {fileID: 1691228215}
   bgm_slider: {fileID: 1522787477}
@@ -3285,7 +3289,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &596076234
 RectTransform:
   m_ObjectHideFlags: 0

@@ -32,6 +32,7 @@ public class Obstacle : MonoBehaviour, IDamagable
         _hp             = hp;
         _maxHp          = hp;                
         _todoText.text  = _todoList[Random.Range(0, _todoList.Length)];
+        _rend.sprite    = _effect.SpriteChange((int)HPState.High);
 
         transform.position = position;
     }
@@ -63,8 +64,7 @@ public class Obstacle : MonoBehaviour, IDamagable
 
     public void Dead()
     {        
-        _isBroken = true;
-        _rend.sprite = _effect.SpriteChange((int)HPState.High);
+        _isBroken = true;        
         _effect.SpawnEffect();        
 
         gameObject.SetActive(false);

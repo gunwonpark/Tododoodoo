@@ -41,7 +41,7 @@ public class StageController : MonoBehaviour
     {
         for(int i = 0; i < _spawnPointsRoot.childCount; i++)
         {
-            _spawnPoints.Add(_spawnPointsRoot.GetChild(i));
+            _spawnPoints.Add(_spawnPointsRoot.GetChild(i));            
         }
         obstacleSpawner = GetComponent<ObstacleSpawner>();
     }
