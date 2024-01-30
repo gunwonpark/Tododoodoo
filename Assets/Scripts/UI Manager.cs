@@ -57,7 +57,7 @@ public class UIManager : MonoBehaviour
         GameManager.Instance.Player.GetComponent<TopDownCharacterController>().OnDeadEvent += ShowGameOverUI;
 
         //랭킹 화면 테스트용
-        rankingList.text = GameManager.Instance._rankingSystem.GetRankingLIst();
+        
     }
     // 볼륨 조절 및 셋팅값 저장
     public void SetMasterVolume(float value)
@@ -85,6 +85,7 @@ public class UIManager : MonoBehaviour
         SpeedCount.text = "0 +";
         JumpCount.text = "0 +";
         GameManager.Instance.currentState = GameManager.State.Ready;
+        rankingList.text = GameManager.Instance._rankingSystem.GetRankingLIst();
         AudioManager.Instance.PlayBgm("Playing");
     }
     public void OnClickOptionsBtn()

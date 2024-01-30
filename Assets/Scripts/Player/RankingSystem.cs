@@ -49,7 +49,7 @@ public class RankingSystem
         string rankingList = "";
         foreach (PlayerScoreData player in _playerRankings)
         {
-            rankingList += $"No. {showNumber}    {player.playerName}     {player.score} \n\n";
+            rankingList += $"No. {showNumber}    {player.playerName}     {player.score} \n";
             // Debug.Log($"{showNumber}. {player.playerName} {player.score}");
             if (showNumber == max) return rankingList;
             showNumber++;
