@@ -63,6 +63,8 @@ public class Razer : MonoBehaviour
 
     private IEnumerator LazerAppear()
     {
+        AudioManager.Instance.PlaySound("Laser");
+
         _lazer.gameObject.SetActive(true);        
 
         float current = 0;

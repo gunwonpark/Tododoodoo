@@ -15,14 +15,17 @@ public class PlayerStatHandler : MonoBehaviour
 
     public void IncreaseMoveSpeed()
     {
+        AudioManager.Instance.PlaySound("UpMS");
         _playerStat.moveSpeed += _increaseMoveSpeedRate;
     }
     public void IncreaseAttackDamage()
     {
+        AudioManager.Instance.PlaySound("UpDmg");
         _playerStat.attackDamage += _increaseAttackDamage;
     }
     public void  DecreaseAttackDelay()
     {
+        AudioManager.Instance.PlaySound("UpAS");
         _playerStat.attackDelay -= _decreaseAttackDelayRate;
         if(_playerStat.attackDelay < 0.02f)
         {
