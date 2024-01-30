@@ -46,9 +46,6 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.DeleteAll();
         _rankingSystem.LoadRankings();
         // Debuging
-        _rankingSystem.AddPlayerScore("gkgk", 244);
-        _rankingSystem.AddPlayerScore("wwww", 244);
-        _rankingSystem.ShowScores();
         currentState = State.Wait;
         stageCount = 1;
         AudioManager.Instance.PlayBgm("Main");

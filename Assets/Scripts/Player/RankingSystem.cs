@@ -5,7 +5,7 @@ using System.Linq;
 public class RankingSystem
 {
     private List<PlayerScoreData> _playerRankings = new List<PlayerScoreData>();
-
+    private string _filePath = "./ScoreData.json";
     public void AddPlayerScore(string name, int score)
     {
         _playerRankings.Add(new PlayerScoreData(name, score));
@@ -22,14 +22,17 @@ public class RankingSystem
     {
         // JSON 형태로 변환하여 PlayerPrefs에 저장
         string jsonData = JsonUtility.ToJson(new Serialization<PlayerScoreData>(_playerRankings));
-        PlayerPrefs.SetString("PlayerRankings", jsonData);
-        PlayerPrefs.Save();
+        System.IO.File.WriteAllText(_filePath, jsonData);
     }
 
     public void LoadRankings()
     {
-        // PlayerPrefs에서 로드
-        string jsonData = PlayerPrefs.GetString("PlayerRankings", "");
+        if (!System.IO.File.Exists(_filePath))
+        {
+            System.IO.File.WriteAllText(_filePath, "");
+        }
+
+        string jsonData = System.IO.File.ReadAllText(_filePath);
         if (!string.IsNullOrEmpty(jsonData))
         {
             _playerRankings = JsonUtility.FromJson<Serialization<PlayerScoreData>>(jsonData).ToList();
@@ -42,6 +45,12 @@ public class RankingSystem
         {
             Debug.Log($"{player.playerName}: {player.score}"); // 콘솔에 표시
         }
+    }
+
+    public void ResetRanking()
+    {
+        _playerRankings.Clear();
+        SaveRankings();
     }
 }
 
