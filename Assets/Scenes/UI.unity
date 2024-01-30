@@ -2535,6 +2535,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6e8772b49f34d402a90016ed445d8a2f, type: 3}
   - {fileID: 8300000, guid: cad11a4481c77fe4aabeb5563cb0bd6c, type: 3}
   - {fileID: 8300000, guid: fe7124fcbd468814590f7a003dc31ea1, type: 3}
+  - {fileID: 8300000, guid: 4129d1f3aa6c77a4b87fa4f3f3a924f9, type: 3}
+  - {fileID: 8300000, guid: 87c540e6f06fc054a9c883a0fb66cd33, type: 3}
+  - {fileID: 8300000, guid: 1b61c7373c53dc94388ed09c0d776e46, type: 3}
 --- !u!4 &521870616
 Transform:
   m_ObjectHideFlags: 0
@@ -10141,7 +10144,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1971131476}
         m_TargetAssemblyTypeName: PlayerStatHandler, Assembly-CSharp
-        m_MethodName: IncreaseJumpDegree
+        m_MethodName: IncreaseAttackDamage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
