@@ -41,6 +41,7 @@ public class AudioManager : MonoBehaviour
             case "Hit": index = 1; break;
             case "Destroy": index = 2; break;
             case "Button": index = 3; break;
+            case "Laser": index = 4; break;
             default: break;
         }
         audioSource.clip = sfx_clips[index];

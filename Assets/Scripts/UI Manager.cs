@@ -73,9 +73,9 @@ public class UIManager : MonoBehaviour
         MainScreen.SetActive(false);
         PlayScreen.SetActive(true);
         StageCount.text = "1";
-        AttackCount.text = "0+";
-        SpeedCount.text = "0+";
-        JumpCount.text = "0+";
+        AttackCount.text = "0 +";
+        SpeedCount.text = "0 +";
+        JumpCount.text = "0 +";
         GameManager.Instance.currentState = GameManager.State.Ready;
         AudioManager.Instance.PlayBgm("Playing");
     }
@@ -130,9 +130,9 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 0;
         Pause.SetActive(true);
     }
-    public void OnClickGameSpeedUpBtn() // 플레이어 업그레이드 테스트용 버튼 메서드
+    public void OnClickGameSpeedUpBtn()
     {
-        Time.timeScale = 15;
+        Time.timeScale += 1.0f;
     }
     public void ShowGameOverUI()
     {
