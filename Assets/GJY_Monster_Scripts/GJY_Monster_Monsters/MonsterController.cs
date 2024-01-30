@@ -19,7 +19,7 @@ public class MonsterController : MonoBehaviour, IDamagable
 
     public virtual void Setup(ObstacleSpawner obstacleSpawner, Transform player) { }
 
-    private void Awake()
+    protected virtual void Awake()
     {
         _rigid = GetComponent<Rigidbody2D>();
         _maxHp = _creatureStat.hp;

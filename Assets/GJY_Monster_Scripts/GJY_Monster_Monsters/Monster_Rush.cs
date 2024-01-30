@@ -4,10 +4,32 @@ using UnityEngine;
 
 public class Monster_Rush : MonsterController
 {
+    private Animator _animator;
+    private SpriteRenderer _spriteRenderer;
+    public Sprite _initSprite;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        _animator = GetComponent<Animator>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _initSprite = _spriteRenderer.sprite;
+    }
+
     private void OnEnable()
     {
         _hp = _maxHp;
-        _rigid.velocity = Vector2.down * _moveSpeed;
+        _rigid.velocity = Vector2.down * _moveSpeed;        
+    }
+
+    private void OnDisable()
+    {
+        _animator.SetTrigger("Reset");
+        _spriteRenderer.sprite = _initSprite;
+    }
+
+    public override void Setup(ObstacleSpawner obstacleSpawner, Transform player)
+    {
         StartCoroutine(RushStandby());
     }
 
@@ -30,18 +52,16 @@ public class Monster_Rush : MonsterController
 
         _rigid.velocity = Vector3.zero;
 
-        yield return new WaitForSeconds(0.5f);
-        Rush();
+        _animator.SetTrigger("RushStandby");
     }
 
-    private void Rush()
+    public void OnRush()
     {
         _rigid.velocity = Vector2.down * _moveSpeed * 5;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
-    {
-        // Temp Code
+    {        
         if (collision.CompareTag("Ground"))
         {            
             Dead();
