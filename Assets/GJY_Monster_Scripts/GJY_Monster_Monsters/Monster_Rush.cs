@@ -16,12 +16,6 @@ public class Monster_Rush : MonsterController
         _initSprite = _spriteRenderer.sprite;
     }
 
-    private void OnEnable()
-    {
-        _hp = _maxHp;
-        _rigid.velocity = Vector2.down * _moveSpeed;        
-    }
-
     private void OnDisable()
     {
         _animator.SetTrigger("Reset");
