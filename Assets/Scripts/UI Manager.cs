@@ -128,6 +128,7 @@ public class UIManager : MonoBehaviour
     public void OnClickGameExitBtn()
     {
         GameOver.SetActive(false);
+        Rank.SetActive(false);
         PlayScreen.SetActive(false);
         MainScreen.SetActive(true);
         AudioManager.Instance.PlayBgm("Main");
@@ -154,6 +155,7 @@ public class UIManager : MonoBehaviour
     }
     public void OnClickInputNameBtn()
     {
+        GameOver.SetActive(false);
         RankingName.interactable = false;
         GameManager.Instance._rankingSystem.AddPlayerScore(RankingName.text, int.Parse(StageCount.text));
         rankingText.text = GameManager.Instance._rankingSystem.GetRankingLIst();
