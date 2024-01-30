@@ -10,7 +10,7 @@ public class PlayerStatHandler : MonoBehaviour
     
     [Header("강화 정도")]
     [SerializeField] float _increaseMoveSpeedRate = 0.2f;
-    [SerializeField] float _increaseAttackDamage = 1.0f;
+    [SerializeField] float _increaseAttackDamage = 3.0f;
     [SerializeField] float _decreaseAttackDelayRate = 0.02f;
 
     public void IncreaseMoveSpeed()

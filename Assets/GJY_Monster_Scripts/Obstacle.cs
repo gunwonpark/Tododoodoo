@@ -13,7 +13,7 @@ public class Obstacle : MonoBehaviour, IDamagable
 
     private enum HPState { High, Medium, Low }
 
-    private float _hp;
+    public float _hp;
     private float _maxHp;
 
     private bool _isBroken = false;
@@ -53,11 +53,11 @@ public class Obstacle : MonoBehaviour, IDamagable
         // 페이즈 3개로 나눔
         // 1/3 체력이하, 2/3 체력이하, 그 이상 
         float devide = _maxHp / 3f;
-        if (_hp >= devide * 2)
+        if (_hp > devide * 2)
             _rend.sprite = _effect.SpriteChange((int)HPState.High);
-        if (_hp < devide * 2)
+        if (_hp <= devide * 2)
             _rend.sprite = _effect.SpriteChange((int)HPState.Medium);
-        if (_hp < devide * 1)
+        if (_hp <= devide * 1)
             _rend.sprite = _effect.SpriteChange((int)HPState.Low);
     }
 
