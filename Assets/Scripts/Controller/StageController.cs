@@ -35,7 +35,7 @@ public class StageController : MonoBehaviour
     private List<int> spawnPointIndex = new List<int>();
 
     // 생성할 몬스터 타입 이름
-    private string[] spawnMonsterType = { "Monster_Common", "Monster_Range", "Monster_Rush" };
+    private string[] spawnMonsterType = { "Monster_Common", "Monster_Rush", "Monster_Range" };
 
     private void Awake()
     {
