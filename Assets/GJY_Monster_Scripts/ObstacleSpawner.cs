@@ -13,7 +13,7 @@ public class ObstacleSpawner : MonoBehaviour
         GameObject go = ObjectPool.i.GetFromPool("Block");
 
         Obstacle obs = go.GetComponent<Obstacle>();        
-        obs.Setup(10, SetPosition(position));
+        obs.Setup(6, SetPosition(position));
     }
 
     private Vector3 SetPosition(Vector2 position)

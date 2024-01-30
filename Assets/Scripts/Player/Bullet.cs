@@ -71,7 +71,7 @@ public class Bullet : MonoBehaviour
                 Obstacle ob = collision.GetComponent<Obstacle>();
                 if(ob != null)
                 {
-                    ob.GetDamage(_bulletDamage);
+                    ob.GetDamage(1);
                 }
             }
         }
