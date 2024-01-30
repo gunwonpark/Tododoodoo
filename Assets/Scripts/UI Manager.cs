@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
@@ -14,10 +15,14 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject PlayScreen;
     [SerializeField] private GameObject PlayerUpgrade;
     [SerializeField] private GameObject GameOver;
+    [SerializeField] private GameObject Rank;
     [SerializeField] private Text StageCount;
     [SerializeField] private Text AttackCount;
     [SerializeField] private Text JumpCount;
     [SerializeField] private Text SpeedCount;
+    [SerializeField] private TextMeshProUGUI rankingList;
+    [SerializeField] private TextMeshProUGUI rankingText;
+    [SerializeField] private TMP_InputField RankingName;
     // 오디오믹서, 볼륨조절 슬라이드
     [Header("AudioMixer & Volume Slider")]
     [SerializeField] private AudioMixer audioMixer;
@@ -50,6 +55,9 @@ public class UIManager : MonoBehaviour
 
         //event 저장
         GameManager.Instance.Player.GetComponent<TopDownCharacterController>().OnDeadEvent += ShowGameOverUI;
+
+        //랭킹 화면 테스트용
+        rankingList.text = GameManager.Instance._rankingSystem.GetRankingLIst();
     }
     // 볼륨 조절 및 셋팅값 저장
     public void SetMasterVolume(float value)
@@ -137,10 +145,19 @@ public class UIManager : MonoBehaviour
     public void ShowGameOverUI()
     {
         Time.timeScale = 0;
+        RankingName.interactable = true;
         GameOver.SetActive(true);
     }
     public void ButtonSound()
     {
         AudioManager.Instance.PlaySound("Button");
+    }
+    public void OnClickInputNameBtn()
+    {
+        RankingName.interactable = false;
+        GameManager.Instance._rankingSystem.AddPlayerScore(RankingName.text, int.Parse(StageCount.text));
+        rankingText.text = GameManager.Instance._rankingSystem.GetRankingLIst();
+        Rank.SetActive(true);
+        Debug.Log("등록이 완료 되었습니다");
     }
 }

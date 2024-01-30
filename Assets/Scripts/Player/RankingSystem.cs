@@ -49,13 +49,22 @@ public class RankingSystem
         string rankingList = "";
         foreach (PlayerScoreData player in _playerRankings)
         {
-            rankingList += $"No. {showNumber} {player.playerName} {player.score} \n\n";
+            rankingList += $"No. {showNumber}    {player.playerName}     {player.score} \n\n";
             // Debug.Log($"{showNumber}. {player.playerName} {player.score}");
             if (showNumber == max) return rankingList;
             showNumber++;
         }
 
         return rankingList;
+    }
+    public List<int> GetRankingScore()
+    {
+        List<int> tempScore = new List<int> {};
+        foreach(PlayerScoreData player in _playerRankings)
+        {
+            tempScore.Add(player.score);
+        }
+        return tempScore;
     }
 
     public void ResetRanking()
