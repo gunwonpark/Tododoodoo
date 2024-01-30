@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e5d57cdcc3637d469b15c78efc55196, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySprite: {fileID: 21300000, guid: 48b959756f0ed25489c149ed932257c2, type: 3}
+  enemySprite: {fileID: 21300000, guid: 6996b6c64d0706f499e57d51bcf5019b, type: 3}
   _bulletSprites:
   - {fileID: 649066567, guid: ef5074d4236b67c40bcc97e44b32d142, type: 3}
   - {fileID: 1166928919, guid: ef5074d4236b67c40bcc97e44b32d142, type: 3}

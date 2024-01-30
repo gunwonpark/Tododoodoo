@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _warning: {fileID: 8643854345009078364}
   _lazer: {fileID: 1963783816883626080}
+  _coll: {fileID: 2502668393287311547}
   layTime: 0.2
   warningTime: 0.2
 --- !u!1 &2685764516462722850
@@ -61,6 +62,7 @@ GameObject:
   - component: {fileID: 1963783816883626080}
   - component: {fileID: 3418371912436590640}
   - component: {fileID: 2502668393287311547}
+  - component: {fileID: 8644128345753382188}
   m_Layer: 0
   m_Name: Lay
   m_TagString: Razer
@@ -142,7 +144,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2685764516462722850}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -180,6 +182,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &8644128345753382188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2685764516462722850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67e50e6a6ce1f1c44a813386d9264600, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9060371344387010219
 GameObject:
   m_ObjectHideFlags: 0

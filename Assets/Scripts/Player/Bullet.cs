@@ -35,6 +35,7 @@ public class Bullet : MonoBehaviour
         _spriteRenderer.sprite = enemySprite;
 
         _rigid.velocity = _bulletDirection * _bulletSpeed;
+        _rigid.AddTorque(300);
 
         _bulletDamage = GameManager.Instance.Player.GetComponent<PlayerStatHandler>()._playerStat.attackDamage;
 

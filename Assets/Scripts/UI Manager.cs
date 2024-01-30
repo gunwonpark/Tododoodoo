@@ -72,7 +72,6 @@ public class UIManager : MonoBehaviour
     {
         MainScreen.SetActive(false);
         PlayScreen.SetActive(true);
-        GameManager.Instance.stageCount = 1;
         StageCount.text = "1";
         AttackCount.text = "0+";
         SpeedCount.text = "0+";
