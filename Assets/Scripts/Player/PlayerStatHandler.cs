@@ -10,20 +10,24 @@ public class PlayerStatHandler : MonoBehaviour
     
     [Header("강화 정도")]
     [SerializeField] float _increaseMoveSpeedRate = 0.2f;
-    [SerializeField] float _increaseJumpDegreeRate = 0.2f;
+    [SerializeField] float _increaseAttackDamage = 1.0f;
     [SerializeField] float _decreaseAttackDelayRate = 0.02f;
 
     public void IncreaseMoveSpeed()
     {
         _playerStat.moveSpeed += _increaseMoveSpeedRate;
     }
-    public void IncreaseJumpDegree()
+    public void IncreaseAttackDamage()
     {
-        _playerStat.jumpDegree += _increaseJumpDegreeRate;
+        _playerStat.attackDamage += _increaseAttackDamage;
     }
     public void  DecreaseAttackDelay()
     {
         _playerStat.attackDelay -= _decreaseAttackDelayRate;
+        if(_playerStat.attackDelay < 0.02f)
+        {
+            _playerStat.attackDelay = 0.02f;
+        }
     }
     public void Init()
     {

@@ -9,12 +9,14 @@ public class PlayerStat
 
     [Range(0, 3)] public float attackDelay;
     [Range(0, 70)] public float attakRange;
+    [Range(1, 20)] public float attackDamage;
 
     public PlayerStat()
     {
         moveSpeed = 5f;
         attackDelay = 0.2f;
         jumpDegree = 10f;
+        attackDamage = 10f;
     }
 
     public  void Init()
@@ -22,5 +24,6 @@ public class PlayerStat
         moveSpeed = 5f;
         attackDelay = 0.2f;
         jumpDegree = 10f;
+        attackDamage = 10f;
     }
 }
