@@ -17,8 +17,8 @@ public class Bullet : MonoBehaviour
     private float _bulletSpeed = 5f;
 
     private bool _isHit = false;
-    private float _bulletDamage = 5f;
-
+    [SerializeField] private float _bulletDamage = 5f;
+   
     private void Awake()
     {
         _rigid = GetComponent<Rigidbody2D>();
@@ -35,6 +35,8 @@ public class Bullet : MonoBehaviour
         _spriteRenderer.sprite = enemySprite;
 
         _rigid.velocity = _bulletDirection * _bulletSpeed;
+
+        _bulletDamage = GameManager.Instance.Player.GetComponent<PlayerStatHandler>()._playerStat.attackDamage;
 
         if (shooter == Shooter.Player)
             SetBulletSprite();
