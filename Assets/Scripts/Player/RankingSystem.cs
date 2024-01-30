@@ -6,6 +6,10 @@ public class RankingSystem
 {
     private List<PlayerScoreData> _playerRankings = new List<PlayerScoreData>();
     private string _filePath = "./ScoreData.json";
+    public RankingSystem()
+    {
+        LoadRankings();
+    }
     public void AddPlayerScore(string name, int score)
     {
         _playerRankings.Add(new PlayerScoreData(name, score));
@@ -39,12 +43,19 @@ public class RankingSystem
             SortRankings();
         }
     }
-    public void ShowScores()
+    public string GetRankingLIst(int max = 10)
     {
+        int showNumber = 1;
+        string rankingList = "";
         foreach (PlayerScoreData player in _playerRankings)
         {
-            Debug.Log($"{player.playerName}: {player.score}"); // 콘솔에 표시
+            rankingList += $"No. {showNumber} {player.playerName} {player.score} \n\n";
+            // Debug.Log($"{showNumber}. {player.playerName} {player.score}");
+            if (showNumber == max) return rankingList;
+            showNumber++;
         }
+
+        return rankingList;
     }
 
     public void ResetRanking()
