@@ -1,9 +1,5 @@
-시연영상
-
+## 시연영상
 https://www.youtube.com/watch?v=ghBNOvfErGc
-
-1.깃 커밋 규칙
-![코드컨벤션](https://github.com/minsang95/Tododoodoo/assets/154496356/d175f8f2-1c23-4717-8f72-99722fd8310d)
 
 ## 팀 프로젝트 소개
 - 프로젝트 이름 :  투두두두 ( To do “두두” )
@@ -19,3 +15,10 @@ https://www.youtube.com/watch?v=ghBNOvfErGc
 - 라운드 클리어 시 능력 선택 UI 창 출력. 3 가지 능력 중 하나를 선택하여 플레이어 능력치를 상승
 - 라운드 클리어 조건 = 제한시간 30초 버티기
 - 몬스터, 몬스터의 발사체에 직접적으로 닿으면 GameOver
+
+![image](https://github.com/user-attachments/assets/d2f8d86b-be3b-431a-a7af-903e2ab18409)
+![image](https://github.com/user-attachments/assets/5b5804ba-b8eb-4b42-bb35-fa867ca4b851)
+![image](https://github.com/user-attachments/assets/9cc3675d-03a8-4bc8-947c-963265e0d28c)
+
+1.깃 커밋 규칙
+![코드컨벤션](https://github.com/minsang95/Tododoodoo/assets/154496356/d175f8f2-1c23-4717-8f72-99722fd8310d)
